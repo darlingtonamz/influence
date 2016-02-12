@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2315266348">
+    <data-source source="LOCAL" name="Rails Influence: development" uuid="a1a98a83-1662-4b27-8a6d-30757ee21397">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:influence_development</jdbc-url>
+      <user-name>postgres</user-name>
+      <user-password>dfc2dfc3dfd9dfcddfd8dfcbdfc9dfcf</user-password>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails Influence: test" uuid="97773d17-7a36-410d-982a-fd3f9113d418">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:Influence_test</jdbc-url>
+      <user-name>Influence</user-name>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails Influence: production" uuid="8a5f161e-0917-40da-8f40-69a4fb5bd17b">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:Influence_production</jdbc-url>
+      <user-name>Influence</user-name>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+
