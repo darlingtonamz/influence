@@ -1,0 +1,9 @@
+<h1>Brands#index</h1>
+
+<% if @brands.length == 0 %>
+    You have not created any brands
+<% else %>
+    <% @brands.each do |b| %>
+        <%= b.name %>
+    <% end %>
+<% end %>
