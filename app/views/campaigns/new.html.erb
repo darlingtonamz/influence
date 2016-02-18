@@ -1,0 +1,22 @@
+<h1>Create a Campaign</h1>
+<%= form_for [@brand, @campaign] do |f|%>
+    <div class="field">
+      <%= f.text_field :name, size: '80', placeholder: "Campaign name"%>
+    </div>
+    <div class="field">
+      <%= f.text_field :url, size: '80', placeholder: "Campaign URL"%>
+    </div>
+    <!--<div class="field">
+      <% #f.select :country_ids, @countries.collect {|p| [ p.nicename, p.id ] }, {prompt: 'Country'}, {multiple: true} %>
+    </div>-->
+    <div class="field">
+      Country: Ghana
+    </div>
+    <div class="field">
+      <%= f.text_area :description, size: '80', placeholder: "Description"%>
+    </div>
+    <div class="field">
+      <%= f.submit 'Create' %>
+    </div>
+
+<% end %>

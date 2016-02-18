@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160216184137) do
+ActiveRecord::Schema.define(:version => 20160218094755) do
 
   create_table "ambassadors", :force => true do |t|
     t.integer  "user_id"
@@ -28,13 +28,6 @@ ActiveRecord::Schema.define(:version => 20160216184137) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "campaign_countries", :force => true do |t|
-    t.integer  "country_id"
-    t.integer  "campaign_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "campaigns", :force => true do |t|
     t.integer  "brand_id"
     t.string   "name"
@@ -44,12 +37,20 @@ ActiveRecord::Schema.define(:version => 20160216184137) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "campaigns_countries", :id => false, :force => true do |t|
+    t.integer "campaign_id"
+    t.integer "country_id"
+  end
+
   create_table "countries", :force => true do |t|
-    t.string   "code"
+    t.string   "iso"
     t.string   "name"
-    t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "nicename"
+    t.string   "iso3"
+    t.string   "numcode"
+    t.string   "phonecode"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "impressions", :force => true do |t|

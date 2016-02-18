@@ -4,6 +4,14 @@
     You have not created any brands
 <% else %>
     <% @brands.each do |b| %>
-        <%= b.name %>
+        <%= link_to ({action: "show", controller: "brands", id: b.id}) do %>
+            <%= b.name %><br>
+        <% end %>
+
     <% end %>
 <% end %>
+
+<%= link_to ({:action=>"new", :controller=>"brands"}) do %>
+    <div class="btn btn-primary">+ Add brand</div>
+<% end %>
+
