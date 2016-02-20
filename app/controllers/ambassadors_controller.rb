@@ -1,4 +1,5 @@
 class AmbassadorsController < ApplicationController
+  layout false
   def index
     if (!current_user)
       redirect_to "/"
@@ -12,5 +13,6 @@ class AmbassadorsController < ApplicationController
   end
 
   def show
+   render "ambassadors/campaigns"
   end
 end

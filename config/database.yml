@@ -3,21 +3,21 @@ development:
   encoding: unicode
   database: influence_development
   pool: 5
-  username: postgres
-  password: hisgrace
+  username: chiamaka
+  password: dotg
 
 test:
   adapter: postgresql
   encoding: unicode
   database: Influence_test
   pool: 5
-  username: Influence
-  password:
+  username: chiamaka
+  password: dotg
 
 production:
   adapter: postgresql
   encoding: unicode
   database: Influence_production
   pool: 5
-  username: Influence
-  password:
+  username: chiamaka
+  password: dotg
