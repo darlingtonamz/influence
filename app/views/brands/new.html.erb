@@ -1,2 +1,13 @@
-<h1>Brands#new</h1>
-<p>Find me in app/views/brands/new.html.erb</p>
+<h1>Create a new brand</h1>
+<%= form_for @brand do |f|%>
+    <div class="field">
+      <%= f.text_field :name, size: '80', placeholder: "Brand name"%>
+    </div>
+    <div class="field">
+      <%= f.text_field :description, size: '80', placeholder: "Description"%>
+    </div>
+    <div class="field">
+      <%= f.submit %>
+    </div>
+
+<% end %>
