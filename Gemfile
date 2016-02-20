@@ -11,3 +11,4 @@ gem 'bootstrap-sass', '~> 3.1.1.0'
   gem 'uglifier', '>= 1.0.3'
 
 gem 'jquery-rails'
+gem 'jquery-cookie-rails', '~> 1.3', '>= 1.3.1.1'
