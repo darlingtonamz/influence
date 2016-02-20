@@ -1,12 +1,20 @@
 Influence::Application.routes.draw do
+<<<<<<< HEAD
 	devise_for :users
 	resources :users
+  resources :brands
   resources :ambassadors
   get '/ambassadors/campaigns', to: 'ambassadors#campaigns'
+=======
 
+  devise_for :users
+
+  resources :users
   resources :brands do
     resources :campaigns
   end
+  resources :ambassadors
+>>>>>>> 4e07a4f4352802642ac222d3b322a1834a79d066
 
   root :to => 'home#index'
 end

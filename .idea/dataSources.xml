@@ -13,14 +13,16 @@
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql:Influence_test</jdbc-url>
-      <user-name>Influence</user-name>
+      <user-name>&lt;%= ENV['INFLUENCE_DB_USERNAME'] %&gt;</user-name>
+      <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddfe3dfe4dfecdfe6dfffdfefdfe4dfe9dfefdff5dfeedfe8dff5dffadfebdff9dff9dffddfe5dff8dfeedf8ddff7df8adf8fdf94</user-password>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails Influence: production" uuid="8a5f161e-0917-40da-8f40-69a4fb5bd17b">
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql:Influence_production</jdbc-url>
-      <user-name>Influence</user-name>
+      <user-name>&lt;%= ENV['INFLUENCE_DB_USERNAME'] %&gt;</user-name>
+      <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddfe3dfe4dfecdfe6dfffdfefdfe4dfe9dfefdff5dfeedfe8dff5dffadfebdff9dff9dffddfe5dff8dfeedf8ddff7df8adf8fdf94</user-password>
       <libraries />
     </data-source>
   </component>

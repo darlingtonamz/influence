@@ -11,13 +11,13 @@ test:
   encoding: unicode
   database: Influence_test
   pool: 5
-  username: Influence
-  password:
+  username: <%= ENV['INFLUENCE_DB_USERNAME'] %>
+  password: <%= ENV['INFLUENCE_DB_PASSWORD'] %>
 
 production:
   adapter: postgresql
   encoding: unicode
   database: Influence_production
   pool: 5
-  username: Influence
-  password:
+  username: <%= ENV['INFLUENCE_DB_USERNAME'] %>
+  password: <%= ENV['INFLUENCE_DB_PASSWORD'] %>

@@ -1,0 +1,9 @@
+<h1>Brands#show</h1>
+<h1>Brand name: <%= brand.name %></h1>
+<% if brand.campaigns.length == 0 %>
+    You have not created any campaigns
+<% end %>
+
+<%= link_to "/brands/#{brand.id}/campaigns/new" do %>
+    <div class="btn btn-primary">+ Add Campaign</div>
+<% end %>
