@@ -3,8 +3,8 @@ development:
   encoding: unicode
   database: influence_development
   pool: 5
-  username: postgres
-  password: hisgrace
+  username: <%= ENV['INFLUENCE_DB_USERNAME'] %>
+  password: <%= ENV['INFLUENCE_DB_PASSWORD'] %>
 
 test:
   adapter: postgresql

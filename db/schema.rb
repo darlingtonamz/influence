@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160218094755) do
+ActiveRecord::Schema.define(:version => 20160219135204) do
 
   create_table "ambassadors", :force => true do |t|
     t.integer  "user_id"
@@ -42,6 +42,13 @@ ActiveRecord::Schema.define(:version => 20160218094755) do
     t.integer "country_id"
   end
 
+  create_table "campaigns_interests", :id => false, :force => true do |t|
+    t.integer  "campaign_id"
+    t.integer  "interest_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "countries", :force => true do |t|
     t.string   "iso"
     t.string   "name"
@@ -58,6 +65,20 @@ ActiveRecord::Schema.define(:version => 20160218094755) do
     t.string   "source"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "interests", :force => true do |t|
+    t.string   "name"
+    t.integer  "parent_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "interests_users", :id => false, :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "interest_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "leads", :force => true do |t|
