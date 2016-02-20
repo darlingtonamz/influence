@@ -1,0 +1,11 @@
+<div class="page-sidebar">
+   <ul>Brands
+      <% brands.each do |b| %>
+          <li>
+            <%= link_to ({action: "show", controller: "brands", id: b.id}) do %>
+                <%= b.name %><br>
+            <% end %>
+          </li>
+      <% end %>
+   </ul>
+</div>

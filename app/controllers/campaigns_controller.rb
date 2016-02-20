@@ -5,7 +5,7 @@ class CampaignsController < ApplicationController
   end
 
   def show
-
+    @campaign = Campaign.find_by_id(params[:id])
   end
 
   def new
