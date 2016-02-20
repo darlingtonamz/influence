@@ -1,0 +1,22 @@
+class AmbassadorsController < ApplicationController
+<<<<<<< HEAD
+  layout false
+=======
+
+>>>>>>> 4e07a4f4352802642ac222d3b322a1834a79d066
+  def index
+    if (!current_user)
+      redirect_to "/"
+    end
+
+    @ambassadors = Ambassador.find_all_by_user_id(params[:user_id]);
+    @user_id = params[:user_id];
+  end
+
+  def new
+  end
+
+  def show
+   render "ambassadors/campaigns"
+  end
+end
