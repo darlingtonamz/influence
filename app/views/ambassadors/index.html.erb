@@ -19,12 +19,32 @@
 		}
   		</style>
   		<script type="text/javascript">
-  		    $( document ).ready(function(){
+  		    $(document).ready(function(){
   			   $(".xn-icon-button").on('click', function(){
-  			   $(".page-sidebar .x-navigation").toggleClass("x-navigation-minimized");
-  			   $(".page-container").toggleClass("page-navigation-toggled page-container-wide");
+  			       $(".page-sidebar .x-navigation").toggleClass("x-navigation-minimized");
+  			       $(".page-container").toggleClass("page-navigation-toggled page-container-wide");
   				});
+
+               if($.cookie('msg') == null){
+                    console.log("cookie");
+                    setTimeout(function(){
+                        $('#myModal').modal('show');
+                    }, 2000);
+                    $.cookie('msg', 'shown', {expires: 1000});
+                    
+                }
+                else{
+                    //$.removeCookie('msg', {path: '/'});
+                    console.log("no cookie");
+                    $("div#myModal.modal").css('display','none');
+                }
+               
+               
             });
+            // $(window).load(function(){
+                
+            //     console.log("loaded");
+            // });
   		</script>     
     </head>
     <body>
@@ -32,12 +52,12 @@
         <div class="page-container">
             
             <!-- START PAGE SIDEBAR -->
-            <%= render 'layouts/sidebar.html.erb'%>
+            <%= render 'sidebar.html.erb'%>
             <!-- END PAGE SIDEBAR -->
             
             <!-- PAGE CONTENT -->
             <div class="page-content">                    
-            <%= render 'layouts/topbar.html.erb'%>
+            <%= render 'topbar.html.erb'%>
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>                    
@@ -119,13 +139,9 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <div class="panel-title-box">
-                                        <h3>Instagram Account</h3>
+                                        <h3>Your Instagram Stats</h3>
                                         <span>Details</span>
                                     </div>
-                                    <ul class="panel-controls" style="margin-top: 2px;">
-                                        <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li> 
-                                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>                                            
-                                    </ul>
                                 </div>
                                 <div class="panel-body padding-0">
                                     <div class="chart-holder" id="dashboard-line-1" style="height: 200px;"></div>
@@ -196,23 +212,33 @@
         <!-- END PAGE CONTAINER -->
 
         <!-- MESSAGE BOX-->
-        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
-            <div class="mb-container">
-                <div class="mb-middle">
-                    <div class="mb-title"><span class="fa fa-sign-out"></span> Sign <strong>Out</strong> ?</div>
-                    <div class="mb-content">
-                        <h2 style="color: white;">Are you sure you want to log out?</h2>                    
-                        <h2 style="color: red;">Please stay back <i class="fa fa-frown-o"></i></h2>
+        <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">You have to do this before you proceed</h4>
                     </div>
-                    <div class="mb-footer">
-                        <div class="pull-right">
-                            <a href="pages-login.html" class="btn btn-success btn-lg">Yes</a>
-                            <button class="btn btn-default btn-lg mb-control-close">No</button>
+                    <div class="modal-body">
+                        <div class="panel-body">
+                            <div class="row text-center">
+                                <button class="btn btn-primary btn-lg" style="background-color: #125688;"><i class="fa fa-instagram"></i> Add Instagram Account</button>
+                            </div>
+                            <h1 class="text-center ">OR</h1>
+                            <h3 class="text-center">Enter your blog url</h3><br />
+                            <form class="form-group">
+                                <input type="text" value="http://" class="validate[required,custom[url]] form-control" id="form-validation-field-0">
+                                <div class="text-center" style="margin-top:20px;">
+                                    <button type="submit" class="btn btn-primary" style="background-color: #286090;">Submit</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
         <!-- END MESSAGE BOX-->
 
         <!-- START PRELOADS -->
