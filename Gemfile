@@ -12,3 +12,7 @@ gem 'bootstrap-sass', '~> 3.1.1.0'
 
 gem 'jquery-rails'
 gem 'jquery-cookie-rails', '~> 1.3', '>= 1.3.1.1'
+
+group :production do
+  gem 'rails_12factor'
+end
