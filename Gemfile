@@ -14,5 +14,6 @@ gem 'jquery-rails'
 gem 'jquery-cookie-rails', '~> 1.3', '>= 1.3.1.1'
 
 group :production do
+  ruby '2.1.7'
   gem 'rails_12factor'
 end
