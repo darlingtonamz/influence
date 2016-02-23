@@ -92,6 +92,14 @@ ActiveRecord::Schema.define(:version => 20160222225726) do
     t.datetime "updated_at",    :null => false
   end
 
+  create_table "socials", :force => true do |t|
+    t.string   "provider"
+    t.integer  "uid"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "subscriptions", :force => true do |t|
     t.string   "email"
     t.boolean  "is_brand"

@@ -15,9 +15,4 @@ test:
   password: <%= ENV['INFLUENCE_DB_PASSWORD'] %>
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: Influence_production
-  pool: 5
-  username: <%= ENV['INFLUENCE_DB_USERNAME'] %>
-  password: <%= ENV['INFLUENCE_DB_PASSWORD'] %>
+  database: <%= ENV['DATABASE_URL'] %>
