@@ -22,7 +22,7 @@ class CampaignsController < ApplicationController
     @campaign.countries.push(Country.find_by_iso('GH'))
 
     if @campaign.save
-      redirect_to @brand
+      redirect_to '/brands'
     else
       render :new
     end

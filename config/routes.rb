@@ -3,6 +3,7 @@ Influence::Application.routes.draw do
 	resources :users
   resources :ambassadors
   get '/ambassadors/campaigns', to: 'ambassadors#campaigns'
+  get '/instagram_redirect', to: 'ambassadors#instagram_redirect', as: :instagram_redirect
 
   resources :brands do
     resources :campaigns
