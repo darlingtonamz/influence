@@ -1,26 +1,35 @@
-<h2>Log in</h2>
+<head>
+  <%= stylesheet_link_tag    'users', media: 'all', 'data-turbolinks-track' => true %>
+</head>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+      <div class="frame">
+        <div class="reg">
+          <h1>Sign In</h1>
+        </div>
+        <div><hr  class="form-bar">
+          <%= form_for(resource, as: resource_name,  :class => "form-sign", url: session_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+          <%= f.email_field :email, autofocus: true, :class => "form-styling", :placeholder => "Email Address" %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+          <%= f.password_field :password, autocomplete: "off", :class => "form-styling", :placeholder => "Password" %>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
+          <% if devise_mapping.rememberable? %>
+          <%= f.check_box :remember_me, :id => "checkbox"%>
+          <label for="checkbox"class="tick"><span class="ui"></span>Keep me signed in</label>
+          <% end %>
+          
+          <%= f.submit "Sign In", :class => "btn-sign" %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+          <% end %>
 
-<%= render "devise/shared/links" %>
+          <div class="forgot">
+           <%= render "devise/shared/links" %>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+

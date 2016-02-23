@@ -4,4 +4,5 @@ class Ambassador < ActiveRecord::Base
   belongs_to :campaign
   has_many   :leads
   has_many   :impressions
+  has_many   :ambassador_requests
 end

@@ -6,6 +6,8 @@ class CampaignsController < ApplicationController
 
   def show
     @campaign = Campaign.find_by_id(params[:id])
+    @ambassadors = @campaign.ambassadors
+    @user = current_user
   end
 
   def new
@@ -20,7 +22,7 @@ class CampaignsController < ApplicationController
     @campaign.countries.push(Country.find_by_iso('GH'))
 
     if @campaign.save
-      redirect_to @brand
+      redirect_to '/brands'
     else
       render :new
     end
