@@ -72,8 +72,12 @@ ActiveRecord::Schema.define(:version => 20160222225726) do
   create_table "impressions", :force => true do |t|
     t.integer  "ambassador_id"
     t.string   "source"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.string   "session_id"
+    t.integer  "clicks",        :default => 0
+    t.integer  "hover_time"
+    t.string   "country"
   end
 
   create_table "interests", :force => true do |t|

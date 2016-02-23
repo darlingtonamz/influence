@@ -25,6 +25,9 @@ class BrandsController < ApplicationController
   def show
     @brand = Brand.find_by_id(params[:id])
     @campaigns = Campaign.find_all_by_brand_id(params[:id])
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

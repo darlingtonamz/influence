@@ -2,7 +2,7 @@
    <ul>Brands
       <% brands.each do |b| %>
           <li>
-            <%= link_to ({action: "show", controller: "brands", id: b.id}) do %>
+            <%= link_to ({action: "show", controller: "brands", id: b.id, remote: true}) do %>
                 <%= b.name %><br>
             <% end %>
           </li>
