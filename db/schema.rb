@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160219135204) do
+ActiveRecord::Schema.define(:version => 20160222225726) do
 
   create_table "ambassadors", :force => true do |t|
     t.integer  "user_id"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(:version => 20160219135204) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "campaign_countries", :force => true do |t|
+    t.integer  "country_id"
+    t.integer  "campaign_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -50,14 +57,16 @@ ActiveRecord::Schema.define(:version => 20160219135204) do
   end
 
   create_table "countries", :force => true do |t|
-    t.string   "iso"
+    t.string   "code"
     t.string   "name"
-    t.string   "nicename"
-    t.string   "iso3"
-    t.string   "numcode"
-    t.string   "phonecode"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "iso"
+    t.text     "nicename"
+    t.text     "iso3"
+    t.text     "numcode"
+    t.text     "phonecode"
   end
 
   create_table "impressions", :force => true do |t|
@@ -96,7 +105,6 @@ ActiveRecord::Schema.define(:version => 20160219135204) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -109,9 +117,17 @@ ActiveRecord::Schema.define(:version => 20160219135204) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "role"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "email"
+    t.text     "ig_access_token"
+    t.text     "ig_id"
+    t.text     "ig_username"
+    t.text     "ig_bio"
+    t.text     "ig_photo"
+    t.text     "ig_full_name"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end
