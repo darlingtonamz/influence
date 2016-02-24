@@ -1,37 +1,41 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<head>
+  <%= stylesheet_link_tag    'users', media: 'all', 'data-turbolinks-track' => true %>
+</head>
+<div class="container">
+ <div class="row">
+  <div class="col-lg-8 col-lg-offset-2">
+   <div class="frame">
+    <div class="reg">
+        <h1>Sign Up </h1>
+    </div>
+    <div><hr  class="form-bar">
+  <%= form_for(resource, as: resource_name, :class => "form-sign", url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
+      
+    <%= f.email_field :email, autofocus: true, :class => "form-styling", :placeholder => "Email Address" %>
 
-    <%= @is_brand %>
+    <%= f.password_field :password, autocomplete: "off", :class => "form-styling", :placeholder => "Password" %>
+    <label> <% if @validatable %>
+    <em>(<%= @minimum_password_length %> Characters Minimum)</em>
+    <% end %></label>
+   
+    
+    <%= f.password_field :password_confirmation, autocomplete: "off",:class => "form-styling", :placeholder => "Confirm Password" %> <br>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-      <%= f.radio_button(:role, "brand") %><%= f.label("Brand") %><br>
-      <%= f.radio_button(:role, "influencer") %><%= f.label("Influencer") %>
-    </div>
-
+      <% f.radio_button(:role, "brand") %><% f.label("Brand") %><br>
+      <% f.radio_button(:role, "influencer") %><% f.label("Influencer") %>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", :class => "btn-sign"  %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+
+ <div  class="success">
+  <%= render "devise/shared/links" %>
+    </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
