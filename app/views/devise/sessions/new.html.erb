@@ -5,31 +5,15 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2">
       <div class="frame">
-        <div class="reg">
-          <h1>Sign In</h1>
-        </div>
-        <div><hr  class="form-bar">
-          <%= form_for(resource, as: resource_name,  :class => "form-sign", url: session_path(resource_name)) do |f| %>
-          <%= devise_error_messages! %>
-
-          <%= f.email_field :email, autofocus: true, :class => "form-styling", :placeholder => "Email Address" %>
-
-          <%= f.password_field :password, autocomplete: "off", :class => "form-styling", :placeholder => "Password" %>
-
-          <% if devise_mapping.rememberable? %>
-          <%= f.check_box :remember_me, :id => "checkbox"%>
-          <label for="checkbox"class="tick"><span class="ui"></span>Keep me signed in</label>
-          <% end %>
-          
-          <%= f.submit "Sign In", :class => "btn-sign" %>
-
-          <% end %>
-
-          <div class="forgot">
-           <%= render "devise/shared/links" %>
-         </div>
+        <% @role = params[:role] %>
+        <% if @role == 'influencer' %>
+              <%= render "influencer_login" %>
+        <% else %>
+          <%= render "brand_login" %>
+        <% end %>
+        
        </div>
      </div>
    </div>
  </div>
-
+</div>
