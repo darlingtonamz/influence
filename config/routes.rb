@@ -6,7 +6,9 @@ Influence::Application.routes.draw do
   get '/instagram_redirect', to: 'ambassadors#instagram_redirect', as: :instagram_redirect
 
   resources :brands do
-    resources :campaigns
+    resources :campaigns do
+      get '/invite', to: 'campaigns#invite'
+    end
   end
 
   root :to => 'home#index'
