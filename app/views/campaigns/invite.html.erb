@@ -1,7 +1,17 @@
 These are the Influencers that can push your business to the next level
 
 <% @users.each do |u| %>
-    <div class="card cprofile">
-      <%= u.email %>
+    <div id="user_card_<%= u.id %>" class="card cprofile">
+      <div>
+        <%= u.email %>
+      </div>
+      <%= form_for @ambassador, :url => {controller: 'ambassadors', action: 'create'}, remote: true do |f|%>
+          <%= f.hidden_field :user_id, value: u.id %>
+          <%= f.hidden_field :campaign_id, value: @campaign.id %>
+          <%= f.hidden_field :status, value: 'pending' %>
+          <%= button_tag(type: 'submit', alt: 'invite', class: 'btn btn-primary') do %>
+              invite
+          <% end %>
+      <% end %>
     </div>
 <% end %>

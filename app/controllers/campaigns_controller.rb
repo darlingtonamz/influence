@@ -33,6 +33,7 @@ class CampaignsController < ApplicationController
 
   def invite
     @campaign = Campaign.find(params[:campaign_id])
+    @ambassador = Ambassador.new
     #@user = User.role('influencer').interest(@campaign.interests)
     @users = User.role('influencer')
   end

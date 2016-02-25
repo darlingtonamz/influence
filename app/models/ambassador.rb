@@ -1,5 +1,5 @@
 class Ambassador < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :user_id, :campaign_id, :status
   belongs_to :user
   belongs_to :campaign
   has_many   :leads

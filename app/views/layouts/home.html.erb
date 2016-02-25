@@ -27,8 +27,8 @@
         <li><a class="smoothscroll"  href="#testimonials" title="">Testimonials</a></li>
         <% if user_signed_in? %>
             <% link_to edit_user_registration_path, :class => 'smoothscroll' do %>
-                <% current_user.email %>
-            <% end %>|
+                <% current_user.email %> | <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+            <% end %>
             <% link_to "Logout", destroy_user_session_path, method: :delete, :class => 'smoothscroll'  %>
         <% else %>
             <% link_to "Sign up", new_user_registration_path, :class => 'highlight with-sep'  %> 
