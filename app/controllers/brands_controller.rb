@@ -1,6 +1,6 @@
 class BrandsController < ApplicationController
+  layout false
   def index
-    render :layout => false
     if (!current_user)
       redirect_to "/"
     else

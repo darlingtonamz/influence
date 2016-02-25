@@ -1,16 +1,27 @@
-<h1>Brand name: <%= brand.name %></h1>
+<div class="card card-outline" style="border:1px solid purple">
+<div class="row"></div>
+<div class="card-head"><header><%= brand.name %></header>
+  <div class="tools">
+  <%= link_to "/brands/#{brand.id}/campaigns/new" do %>
+    <div class="btn btn-primary">+ Add Campaign</div>
+<% end %>
+<a class="btn btn-icon-toggle btn-collapse"><i class="fa fa-angle-down"></i></a>
+</div>
+</div>
 <div class="row">
     <% if brand.campaigns.length == 0 %>
+      <div class="card col-offset-4 col-md-4">
         You have not created any campaigns
+      </div>
     <% else %>
         <% brand.campaigns.each do |c| %>
-
+          <div>
               <%= link_to "/brands/#{c.brand_id}/campaigns/#{c.id}" do %>
                   <div class="card col-md-4"><%= c.name %></div>
               <% end %>
         <% end %>
     <% end %>
 </div>
-<%= link_to "/brands/#{brand.id}/campaigns/new" do %>
-    <div class="btn btn-primary">+ Add Campaign</div>
-<% end %>
+</div>
+</div>
+</div>

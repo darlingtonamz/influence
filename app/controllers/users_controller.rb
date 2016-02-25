@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    
     if !current_user
       redirect_to '/'
     elsif (current_user.role == 'brand')
