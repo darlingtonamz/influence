@@ -1,4 +1,5 @@
 Influence::Application.configure do
+  config.assets.precompile += %w( home.css user.css brands.css )
   # Settings specified here will take precedence over those in config/application.rb
   config.assets.js_compressor = :uglifier
   # Code is not reloaded between requests
