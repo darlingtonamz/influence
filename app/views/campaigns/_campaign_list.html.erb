@@ -1,0 +1,13 @@
+<div class="card card-outline" style="border:1px solid purple">
+  <%= link_to ({:action=>"index", :controller=>"brands", remote: true}) do %>
+      < Back
+  <% end %>
+    Campaigns for <%= brand.name %>
+    <% campaigns.each do |c| %>
+      <%= link_to ({action: "show", controller: "campaigns", id: c.id, remote: true}) do %>
+          <div class="card">
+            <%= c.name %>
+          </div>
+      <% end %>
+    <% end %>
+</div>

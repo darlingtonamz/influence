@@ -8,6 +8,10 @@ class BrandsController < ApplicationController
       @user_id = current_user.id
       puts '#'*100
       puts @brands
+      respond_to do |format|
+        format.js
+        format.html
+      end
     end
   end
 
@@ -15,9 +19,7 @@ class BrandsController < ApplicationController
     @brands = current_user.brands
     puts '~'*100
     puts @brands
-    respond_to do |format|
-      format.js
-    end
+
   end
 
   def new

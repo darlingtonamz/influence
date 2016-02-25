@@ -1,9 +1,11 @@
-<ul>Brands
-  <% brands.each do |b| %>
-      <li>
-        <%= link_to ({action: "show", controller: "brands", id: b.id, remote: true}) do %>
-            <%= b.name %><br>
-        <% end %>
-      </li>
-  <% end %>
-</ul>
+<div class="card card-outline" style="border:1px solid purple">
+    <ul>Brands
+      <% brands.each do |b| %>
+          <li>
+            <%= link_to ({action: "index", controller: "campaigns", brand_id: b.id, remote: true}) do %>
+                <%= b.name %><br>
+            <% end %>
+          </li>
+      <% end %>
+    </ul>
+</div>

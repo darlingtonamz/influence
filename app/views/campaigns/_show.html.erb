@@ -22,11 +22,7 @@
                 <% brand.campaigns.each do |c| %>
                   <div>
                       <%= link_to "/brands/#{c.brand_id}/campaigns/#{c.id}" do %>
-                          <div class="card col-md-4">
-                            <div class="ctop">...</div>
-                            <div class="cmid"><%= c.name %></div>
-
-                          </div>
+                          <div class="card col-md-4"><%= c.name %></div>
                       <% end %>
                 <% end %>
             <% end %>

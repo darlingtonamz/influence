@@ -1,7 +1,12 @@
 class CampaignsController < ApplicationController
   layout false
   def index
-
+    @brand = Brand.find(params[:brand_id])
+    @campaigns = @brand.campaigns
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def show
