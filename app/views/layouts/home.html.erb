@@ -6,6 +6,9 @@
 
   <%= stylesheet_link_tag    'home', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'home', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'home/main', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'home/modernizr', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'home/plugins', 'data-turbolinks-track' => true %>
 
   <link rel="icon" type="image/png" href="favicon.jpg">
 
@@ -28,8 +31,8 @@
         <% if user_signed_in? %>
             <% link_to edit_user_registration_path, :class => 'smoothscroll' do %>
                 <% current_user.email %>
-            <% end %>|
-            <% link_to "Logout", destroy_user_session_path, method: :delete, :class => 'smoothscroll'  %>
+            <% end %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'smoothscroll'  %>
         <% else %>
             <% link_to "Sign up", new_user_registration_path, :class => 'highlight with-sep'  %> 
             <% link_to "Sign in", new_user_session_path, :class => 'smoothscroll'  %>

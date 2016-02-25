@@ -1,3 +1,5 @@
 //= require jquery
 //= require jquery_ujs
-//= require_tree ./home
+//= require home/plugins
+//= require home/main
+
