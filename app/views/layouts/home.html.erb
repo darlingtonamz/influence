@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>Sway Up</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <%= stylesheet_link_tag    'home', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'home', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'home/main', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'home/modernizr', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'home/plugins', 'data-turbolinks-track' => true %>
+
+  <link rel="icon" type="image/png" href="favicon.jpg">
+
+</head>
+
+<body id="top">
+<header>
+
+  <div class="row">
+
+    <div class="logo">
+      <a href="#">Sway Up</a>
+    </div>
+
+    <nav id="main-nav-wrap">
+      <ul class="main-navigation">
+        <li><a class="smoothscroll"  href="#home" title="">Home</a></li>
+        <li><a class="smoothscroll"  href="#features" title="">Influencers</a></li>
+        <li><a class="smoothscroll"  href="#testimonials" title="">Testimonials</a></li>
+        <% if user_signed_in? %>
+            <% link_to edit_user_registration_path, :class => 'smoothscroll' do %>
+                <% current_user.email %>
+            <% end %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'smoothscroll'  %>
+        <% else %>
+            <% link_to "Sign up", new_user_registration_path, :class => 'highlight with-sep'  %> 
+            <% link_to "Sign in", new_user_session_path, :class => 'smoothscroll'  %>
+        <% end %>
+        <!--<li class="highlight with-sep"><a href="#" title="">Sign Up</a></li>
+        <li><a class="smoothscroll"  href="#pricing" title="">Sign In</a></li>-->
+
+      </ul>
+    </nav>
+
+    <a class="menu-toggle" href="#"><span>Menu</span></a>
+
+  </div>
+
+</header> <!-- /header -->
+<%= yield %>
+
+</body>
+
+</html>

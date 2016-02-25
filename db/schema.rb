@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160219135204) do
+ActiveRecord::Schema.define(:version => 20160223184539) do
+
+  create_table "ambassador_requests", :force => true do |t|
+    t.integer  "ambassador_id"
+    t.integer  "campaign_id"
+    t.string   "status"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "ambassadors", :force => true do |t|
     t.integer  "user_id"
@@ -35,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20160219135204) do
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.text     "tag"
   end
 
   create_table "campaigns_countries", :id => false, :force => true do |t|
@@ -43,10 +52,8 @@ ActiveRecord::Schema.define(:version => 20160219135204) do
   end
 
   create_table "campaigns_interests", :id => false, :force => true do |t|
-    t.integer  "campaign_id"
-    t.integer  "interest_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer "campaign_id"
+    t.integer "interest_id"
   end
 
   create_table "countries", :force => true do |t|
@@ -63,8 +70,12 @@ ActiveRecord::Schema.define(:version => 20160219135204) do
   create_table "impressions", :force => true do |t|
     t.integer  "ambassador_id"
     t.string   "source"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.string   "session_id"
+    t.integer  "clicks",        :default => 0
+    t.integer  "hover_time"
+    t.string   "country"
   end
 
   create_table "interests", :force => true do |t|
@@ -88,6 +99,14 @@ ActiveRecord::Schema.define(:version => 20160219135204) do
     t.datetime "updated_at",    :null => false
   end
 
+  create_table "socials", :force => true do |t|
+    t.string   "provider"
+    t.integer  "uid"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "subscriptions", :force => true do |t|
     t.string   "email"
     t.boolean  "is_brand"
@@ -109,6 +128,12 @@ ActiveRecord::Schema.define(:version => 20160219135204) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "role"
+    t.text     "ig_access_token"
+    t.text     "ig_id"
+    t.text     "ig_username"
+    t.text     "ig_bio"
+    t.text     "ig_photo"
+    t.text     "ig_full_name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

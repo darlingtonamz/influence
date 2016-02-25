@@ -15,6 +15,10 @@
     <div class="field">
       <%= f.text_area :description, size: '80', placeholder: "Description"%>
     </div>
+
+    <div class="field">
+      <%= f.select :interest_ids, @interests.collect {|p| [ p.name.capitalize, p.id ] }, {prompt: 'Interests'}, {multiple: true} %>
+    </div>
     <div class="field">
       <%= f.submit 'Create' %>
     </div>

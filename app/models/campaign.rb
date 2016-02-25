@@ -4,6 +4,7 @@ class Campaign < ActiveRecord::Base
   has_many :ambassadors
   has_and_belongs_to_many :countries
   has_and_belongs_to_many :interests
+  has_many   :ambassador_requests
 
-  attr_accessible :name, :description, :url, :country_ids
+  attr_accessible :name, :description, :url, :country_ids, :interest_ids
 end
