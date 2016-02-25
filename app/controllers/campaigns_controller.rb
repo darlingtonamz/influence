@@ -1,5 +1,5 @@
 class CampaignsController < ApplicationController
-
+  layout false
   def index
 
   end

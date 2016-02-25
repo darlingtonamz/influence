@@ -7,10 +7,16 @@ class AmbassadorsController < ApplicationController
     @ambassadors = Ambassador.find_all_by_user_id(params[:user_id]);
     @user_id = params[:user_id];
 
-    if current_user.ig_id.blank?
-      response2 = HTTParty.get('https://api.instagram.com/v1/users/' + current_user.ig_id + '/?access_token='+ current_user.ig_access_token);
-      puts "&" * 100
-      session[:ig_followers] = response2['data']['counts']['followed_by']
+    if current_user.socials.count > 0
+      if current_user.socials.where(provider: "instagram").where("followers <> ''")
+        client = current_user.socials.where(provider: "instagram").first
+        uid = client.uid.to_i
+        access_token = current_user.socials.where(provider: "instagram").first.access_token
+        
+        response2 = HTTParty.get("https://api.instagram.com/v1/users/#{uid}/?access_token=#{access_token}");
+        client.followers = response2['data']['counts']['followed_by']
+        client.save
+      end
     end
   end
 
@@ -43,22 +49,21 @@ class AmbassadorsController < ApplicationController
       }
     }
 
-    response = HTTParty.post('https://api.instagram.com/oauth/access_token', options)
+  response = HTTParty.post('https://api.instagram.com/oauth/access_token', options)
+  
+  social = Social.new
+    social.provider = "instagram"
+    social.user_id = current_user.id
+    social.access_token = response['access_token']
+    social.uid = response['user']['id']
+    social.username = response['user']['username']
+    social.bio = response['user']['bio']
+    social.photo = response['user']['profile_picture']
+    social.full_name = response['user']['full_name']
 
+    current_user.socials << social
 
-    current_user.ig_access_token = response['access_token']
-    current_user.ig_id = response['user']['id']
-    current_user.ig_username = response['user']['username']
-    current_user.ig_bio = response['user']['bio']
-    current_user.ig_photo = response['user']['profile_picture']
-    current_user.ig_full_name = response['user']['full_name']
-
-    current_user.save
+    #current_user.save
     redirect_to ambassadors_path
   end
-
-  private
-    def ambassador_param
-      params.require(:ambassador).permit(:user_id, :campaign_id, :status)
-    end
 end
