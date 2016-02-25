@@ -17,6 +17,5 @@ gem 'pry'
 gem 'test-unit'
 
 group :production do
-  ruby '2.2.3'
   gem 'rails_12factor'
 end

@@ -1,7 +1,7 @@
 <h1>Hi</h1>
 <%= @campaign.name %>
-<% if ((@campaign.brand.user_id != @user.id) && (@user.role != 'brand')) %>
-    <div class="btn">Apply now</div>
-<% else %>
-         nothing to see here
+<% if ((@campaign.brand.user_id == @user.id)) %>
+    <%= link_to "/brands/#{@campaign.brand_id}/campaigns/#{@campaign.id}/invite" do %>
+        <div class="btn">Apply now</div>
+    <% end %>
 <% end %>

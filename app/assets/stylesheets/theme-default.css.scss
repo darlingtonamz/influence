@@ -755,7 +755,8 @@ body.page-container-boxed .page-container {
 .x-navigation.x-navigation-minimized > li.xn-logo > a:first-child {
   padding: 0px;
   width: 50px;
-  background-image: url("../img/logo-small.png");
+  background-image: url("logo.png");
+  background-size: contain;
 }
 .x-navigation.x-navigation-minimized .xn-search input {
   width: 30px;
@@ -892,7 +893,7 @@ body.page-container-boxed .page-container {
 .x-navigation > li.xn-logo > a:first-child {
   font-size: 0px;
   text-indent: -9999px;
-  background: url("logo.png") top center no-repeat;
+  background: url("logo.png") top center no-repeat #e34724;
   background-size: contain;
   padding: 0px;
   border-bottom: 0px;
@@ -7099,18 +7100,6 @@ li.ext_xml {
 li.ext_zip {
   background: url(../img/filetree/zip.png) left top no-repeat;
 }
-/* END Filetree */
-.chart-legend {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-.rickshaw_legend {
-  background: rgba(0, 0, 0, 0.05);
-}
-.rickshaw_legend .label {
-  color: #333;
-}
 /* END TEMPLATE PLUGINS */
 .fa-right {
   margin-left: 5px;
@@ -7120,6 +7109,9 @@ li.ext_zip {
 .campaigns{
   height: 200px;
   transition: all 0.2s ease;
+  position: relative;
+  border-bottom: 1px solid #e2e2e2;
+  border-right: 1px solid #e2e2e2;
 }
 
 .campaigns:hover{
@@ -7127,9 +7119,19 @@ li.ext_zip {
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  background: #ffffff;
   cursor: pointer;
   transition: all 0.2s ease;
 }
+
+.foot{
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 10px;
+  left: 100px;
+  float : bottom;
+}
+
 /* Animations */
 @-webkit-keyframes pulsate {
   0% {

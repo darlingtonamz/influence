@@ -6,6 +6,12 @@ class AmbassadorsController < ApplicationController
     end
     @ambassadors = Ambassador.find_all_by_user_id(params[:user_id]);
     @user_id = params[:user_id];
+
+    if current_user.ig_id.blank?
+      response2 = HTTParty.get('https://api.instagram.com/v1/users/' + current_user.ig_id + '/?access_token='+ current_user.ig_access_token);
+      puts "&" * 100
+      session[:ig_followers] = response2['data']['counts']['followed_by']
+    end
   end
 
   def new
@@ -37,13 +43,6 @@ class AmbassadorsController < ApplicationController
   current_user.ig_full_name = response['user']['full_name']
 
   current_user.save
-  # response2 = HTTParty.get('https://api.instagram.com/v1/users/' + current_user.ig_id + '/?access_token='+ current_user.ig_access_token);
-  # puts "&" * 100
-  # current_user.ig_followers = response2['data']['counts']['followed_by']
   redirect_to ambassadors_path
- end
-
- def user_followers
-
- end
+end
 end

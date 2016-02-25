@@ -7,7 +7,9 @@ Influence::Application.routes.draw do
 
   get '/users/sign_in?role=influencer', to: 'devise/sessions#new'
   resources :brands do
-    resources :campaigns
+    resources :campaigns do
+      get '/invite', to: 'campaigns#invite'
+    end
   end
 
   root :to => 'home#index'

@@ -146,7 +146,7 @@
                                     <div class="chart-holder" id="dashboard-line-1" style="height: 200px;">
                                         <% if !current_user.ig_id.blank? %>
                                             <h4 class="text-center">IG Name: <%= current_user.ig_username %></h4>
-                                            <h4 class="text-center">Number of followers:</h4>
+                                            <h4 class="text-center">Number of followers: <%= session[:ig_followers] %></h4>
                                         <% end %>
                                     </div>
                                 </div>
