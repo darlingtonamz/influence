@@ -6,7 +6,9 @@ Influence::Application.routes.draw do
   get '/instagram_redirect', to: 'ambassadors#instagram_redirect', as: :instagram_redirect
 
   get '/users/sign_in?role=influencer', to: 'devise/sessions#new'
+  get '/brand_list', to: 'brands#list'
   resources :brands do
+
     resources :campaigns do
       get '/invite', to: 'campaigns#invite'
     end
