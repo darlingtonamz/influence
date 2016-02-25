@@ -3,7 +3,7 @@ class BrandsController < ApplicationController
     if (!current_user)
       redirect_to "/"
     else
-      @brands = Brand.find_all_by_user_id(current_user.id);
+      @brands = current_user.brands;
       @user_id = current_user.id;
     end
   end
@@ -24,7 +24,7 @@ class BrandsController < ApplicationController
 
   def show
     @brand = Brand.find_by_id(params[:id])
-    @campaigns = Campaign.find_all_by_brand_id(params[:id])
+    @campaigns = @brand.campaigns
     respond_to do |format|
       format.js
     end

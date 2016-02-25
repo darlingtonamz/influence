@@ -4,14 +4,16 @@ class AmbassadorsController < ApplicationController
     if (!current_user)
       redirect_to "/"
     end
-    @ambassadors = Ambassador.find_all_by_user_id(params[:user_id]);
+    @ambassadors = Ambassador.find_by_user_id(params[:user_id]);
     @user_id = params[:user_id];
 
+=begin
     if current_user.ig_id.blank?
       response2 = HTTParty.get('https://api.instagram.com/v1/users/' + current_user.ig_id + '/?access_token='+ current_user.ig_access_token);
       puts "&" * 100
       session[:ig_followers] = response2['data']['counts']['followed_by']
     end
+=end
   end
 
   def new

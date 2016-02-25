@@ -3,5 +3,4 @@ class Brand < ActiveRecord::Base
   has_many :campaigns
   belongs_to :user
 
-  attr_accessible :name, :description
 end
