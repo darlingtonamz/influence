@@ -3,3 +3,4 @@
 //= require brands/App
 //= require brands/AppNavigation
 //= require brands/AppNavSearch
+//= require bootstrap

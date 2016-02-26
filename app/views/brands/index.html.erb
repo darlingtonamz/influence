@@ -40,7 +40,7 @@
                     <% if @brands.empty? %>
                       You have no brands
                     <% else %>
-                      <%= render "show", brand: @brands[0] %>
+                      <%= render "campaigns/index", brand: @brands[0] %>
                     <% end %>
                 </div>
             </section>
@@ -77,10 +77,10 @@
 
               <!-- BEGIN DASHBOARD -->
               <li>
-                <a href="#" >
+                <%= link_to ({:action=>"new", :controller=>"brands", remote: true}) do %>
                   <div class="gui-icon"><i class="fa fa-plus fa-fw"></i></div>
                   <span class="title">Create Brand</span>
-                </a>
+                <% end %>
               </li><!--end /menu-li -->
               <!-- END DASHBOARD -->
               <li>
@@ -90,7 +90,7 @@
                 </a>
               </li>
               <li>
-                <%= link_to ({:action=>"index", :controller=>"brands", remote: true}) do %>
+                <%= link_to ({url: '/brand_list', remote: true}) do %>
                   <div class="gui-icon"><i class="fa fa-globe"></i></div>
 
                     <span class="title">All Brands</span>

@@ -8,10 +8,6 @@ class BrandsController < ApplicationController
       @user_id = current_user.id
       puts '#'*100
       puts @brands
-      respond_to do |format|
-        format.js
-        format.html
-      end
     end
   end
 
@@ -19,20 +15,31 @@ class BrandsController < ApplicationController
     @brands = current_user.brands
     puts '~'*100
     puts @brands
-
+    respond_to do |format|
+      format.js
+    end
   end
 
   def new
     @brand = Brand.new
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create
     @brand = Brand.new(brand_param)
     @brand.user_id = current_user.id
-    if @brand.save
-      redirect_to '/brands'
-    else
-      redirect_to '/brands/new'
+    respond_to do |format|
+      if @brand.save
+        #redirect_to '/brands'
+        #format.js { render "brand_list", :locals => {:id => params[:id]} }
+        @brands = current_user.brands
+        format.js { render "index"}
+      else
+        #redirect_to '/brands/new'
+        format.js { render "error"}
+      end
     end
   end
 

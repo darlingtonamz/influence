@@ -4,8 +4,8 @@ class CampaignsController < ApplicationController
     @brand = Brand.find(params[:brand_id])
     @campaigns = @brand.campaigns
     respond_to do |format|
-      format.js
       format.html
+      format.js
     end
   end
 
