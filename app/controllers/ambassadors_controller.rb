@@ -66,4 +66,9 @@ class AmbassadorsController < ApplicationController
     #current_user.save
     redirect_to ambassadors_path
   end
+
+  private
+    def ambassador_param
+      params.require(:ambassador).permit(:user_id, :campaign_id, :status)
+    end
 end

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  scope :role, -> (role) { where role: role }
+  scope :role, -> (ambassador_id) { where.not(:mid => Ambassador.select(ambassador_id).uniq) }
+  scope :is_influencer, -> { where(role: 'inflencer') }
   #scope :interests
 
   devise :database_authenticatable, :registerable,

@@ -39,7 +39,7 @@
             <section>
                 <div class="section-body">
                     <% if @brands.empty? %>
-                      You have no brands
+                      <%= render "zero" %>
                     <% else %>
                       <%= render "campaigns/index", brand: @brands[0] %>
                     <% end %>

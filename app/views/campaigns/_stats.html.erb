@@ -1,33 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>SwayUp - Brands</title>
-
-  <!-- BEGIN META -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="keywords" content="brand dashboard">
-  <meta name="description" content="Monitor and Track Brand Campaigns">
-  <!-- END META -->
-
-  <!-- BEGIN STYLESHEETS -->
-  <%= stylesheet_link_tag  'brands', media: 'all', 'data-turbolinks-track' => true %>
-  <link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
-  <%= javascript_include_tag 'brands/jquery-1.11.2.min', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'brands/AppNavSearch', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'brands/bootstrap.min', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'brands/AppNavigation', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'brands/moment.min', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'brands/App', 'data-turbolinks-track' => true %>
-  <!-- END STYLESHEETS -->
-
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script type="text/javascript" src="../../assets/js/libs/utils/html5shiv.js?1403934957"></script>
-    <script type="text/javascript" src="../../assets/js/libs/utils/respond.min.js?1403934956"></script>
-    <![endif]-->
-  </head>
-  <body>
 <h1>Hi</h1>
 <%= @campaign.name %>
 <% if ((@campaign.brand.user_id == @user.id)) %>
@@ -167,6 +137,4 @@
               </div><!--end .row -->
             </div><!--end .section-body -->
           </section>
-        </div><!--end #content-->
-  </body>
-</html>
+</div><!--end #content-->

@@ -11,6 +11,7 @@ Influence::Application.routes.draw do
 
     resources :campaigns do
       get '/invite', to: 'campaigns#invite'
+      get '/stats', to: 'campaigns#stats'
     end
   end
 

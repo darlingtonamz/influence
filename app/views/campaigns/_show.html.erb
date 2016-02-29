@@ -1,0 +1,18 @@
+<div class="col-md-7 col-md-offset-3">
+  <div class="card style-accent">
+    <%= render 'top_mini_menu' %>
+      <div class="card-head"><header>Campaign Details</header>
+        <div class="tools">
+          <%= link_to  edit_brand_campaign_path(@campaign.brand_id, @campaign.id), remote: true do %>
+              <span><i class="fa fa-pencil"></i> Edit</span>
+          <% end %>
+        </div>
+    </div>
+    <div class="white no-pad">
+      <%= @campaign.name%>
+      <div id="show_inner">
+
+      </div>
+    </div>
+  </div>
+</div>

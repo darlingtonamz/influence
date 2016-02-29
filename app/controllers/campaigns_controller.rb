@@ -13,6 +13,10 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find_by_id(params[:id])
     @ambassadors = @campaign.ambassadors
     @user = current_user
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
@@ -36,11 +40,28 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def edit
+    @campaign = Campaign.find_by_id(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def stats
+    @campaign = Campaign.find(params[:campaign_id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def invite
     @campaign = Campaign.find(params[:campaign_id])
     @ambassador = Ambassador.new
-    #@user = User.role('influencer').interest(@campaign.interests)
     @users = User.role('influencer')
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
