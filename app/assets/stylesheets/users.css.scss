@@ -346,7 +346,7 @@ label.tick {
   border-radius: 20px;
   margin-left: 30%;
   padding: 8px;
-  background-color: #f2dede;
+  background-color: #f8bbbb;
   border-color: #eed3d7;
 }
 
@@ -432,4 +432,84 @@ h1 {
   -webkit-transform: rotate(180deg);
       -ms-transform: rotate(180deg);
           transform: rotate(180deg);
+}
+
+footer {
+  padding-bottom: 3rem;
+  font-size: 1.5rem;
+  line-height: 2.7rem;
+  font-family: "raleway-medium", sans-serif;
+  color: #465166;
+}
+footer a, footer a:visited {
+  color: #F191F8;
+}
+footer a:hover, footer a:focus {
+  color: #FFFFFF;
+}
+footer h4 {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.2rem;
+  color: #FFFFFF;
+}
+footer ul {
+  margin-left: 0;
+}
+footer ul li {
+  padding-left: 0;
+}
+
+.footer-bottom {
+  margin-top: 3rem;
+  text-align: center;
+}
+.footer-bottom .copyright span {
+  display: inline-block;
+}
+.footer-bottom .copyright span::after {
+  content: "|";
+  display: inline-block;
+  padding: 0 1rem 0 1.2rem;
+  color: rgba(255, 255, 255, 0.1);
+}
+.footer-bottom .copyright span:last-child::after {
+  display: none;
+}
+
+div.row.top-spacing{
+  margin-top: 5%;
+}
+
+.logo a {
+  display: block;
+  margin: 10px;
+  padding: 0;
+  border: none;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  width: 120px;
+  height: 42px;
+  background: url("/images/swayup-logo-final.png") no-repeat center;
+  background-size: 110px 42px;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.frame.reduce {
+  margin-top: -15px;
+}
+
+footer.fit {
+  padding-bottom: 15px;
+}
+
+
+footer.stretch {
+  padding: 40px;
+  margin: 20px;
 }
