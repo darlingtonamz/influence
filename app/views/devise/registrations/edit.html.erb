@@ -1,8 +1,18 @@
+<head>
+  <%= stylesheet_link_tag    'users', media: 'all', 'data-turbolinks-track' => true %>
+</head>
 <div class="container">
+   <div class="row">
+    <div class="logo">
+      <a href="/">Sway Up</a>
+    </div>
+  </div>
  <div class="row">
   <div class="col-lg-8 col-lg-offset-2">
-   <div class="frame">
-        <h2>Edit  <%= resource_name.to_s.humanize %></h2>
+   <div class="frame reduce">
+    <div class="reg">
+       <h1>Edit Profile <% resource_name.to_s.humanize %></h1>
+    </div>   
     <div><hr  class="form-bar">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -41,4 +51,11 @@
 </div>
 </div>
 </div>
+<footer class="fit">
+ <div class="col-twelve">
+        <div class="copyright">
+          <span>© Copyright SwayUp 2016.</span>
+        </div>
+  </div> 
+</footer>
 </div>
