@@ -6,9 +6,6 @@
 
   <%= stylesheet_link_tag    'home', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'home', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'home/main', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'home/modernizr', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'home/plugins', 'data-turbolinks-track' => true %>
 
   <link rel="icon" type="image/png" href="favicon.jpg">
 
@@ -30,7 +27,7 @@
         <li><a class="smoothscroll"  href="#testimonials" title="">Testimonials</a></li>
         <% if user_signed_in? %>
             <% link_to edit_user_registration_path, :class => 'smoothscroll' do %>
-                <% current_user.email %>
+                <% current_user.email %> | <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
             <% end %>
             <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'smoothscroll'  %>
         <% else %>

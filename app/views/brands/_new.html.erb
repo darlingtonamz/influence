@@ -1,0 +1,15 @@
+<div class="card card-outline" style="border:1px solid purple">
+    <h1>Create a new brand</h1>
+    <%= form_for brand, remote: true do |f|%>
+        <div class="field">
+          <%= f.text_field :name, size: '80', placeholder: "Brand name"%>
+        </div>
+        <div class="field">
+          <%= f.text_field :description, size: '80', placeholder: "Description"%>
+        </div>
+        <div class="field">
+          <%= f.submit %>
+        </div>
+    <% end %>
+  <div id="cerror"></div>
+</div>

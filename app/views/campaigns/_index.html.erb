@@ -15,18 +15,12 @@
         </div>
         <div class="row">
             <% if brand.campaigns.length == 0 %>
-              <div class="card col-offset-4 col-md-4">
-                You have not created any campaigns
-              </div>
+                  <%= render "zero" %>
             <% else %>
                 <% brand.campaigns.each do |c| %>
                   <div>
-                      <%= link_to "/brands/#{c.brand_id}/campaigns/#{c.id}" do %>
-                          <div class="card col-md-4">
-                            <div class="ctop">...</div>
-                            <div class="cmid"><%= c.name %></div>
-
-                          </div>
+                      <%= link_to "/brands/#{c.brand_id}/campaigns/#{c.id}", remote: true do %>
+                          <div class="card col-md-4"><%= c.name %></div>
                       <% end %>
                 <% end %>
             <% end %>

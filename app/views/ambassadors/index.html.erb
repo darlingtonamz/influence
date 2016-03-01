@@ -12,7 +12,7 @@
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   		<%= csrf_meta_tags %>      
-  	    <link rel="stylesheet" href="assets/theme-default.css.scss">
+  	    <!--<link rel="stylesheet" href="assets/theme-default.css.scss">-->
   		<style type="text/css">
 		  .x-navigation.x-navigation-minimized {
 		  min-height: 670px!important;
@@ -25,7 +25,7 @@
   			       $(".page-container").toggleClass("page-navigation-toggled page-container-wide");
   				});
 
-               if(<%= current_user.ig_id.blank? %>){
+               if(<%= current_user.socials.where(provider: "instagram").empty? %>){
                     console.log("blank, so modal appears");
                     setTimeout(function(){
                         $('#myModal').modal('show');
@@ -36,20 +36,15 @@
                 else{
                     console.log("user has signed in, modal doesnt appear");
                     $("div#myModal.modal").css('display','none');
-                }
-               
-               
+                } 
             });
-            // $(window).load(function(){
-                
-            //     console.log("loaded");
-            // });
   		</script>     
     </head>
     <body>
         <!-- START PAGE CONTAINER -->
         <div class="page-container">
-            
+            <!-- Current user's instagram details -->
+            <% ig_user = current_user.socials.where(provider: "instagram").first %>
             <!-- START PAGE SIDEBAR -->
             <%= render 'sidebar.html.erb'%>
             <!-- END PAGE SIDEBAR -->
@@ -68,9 +63,15 @@
                 <div class="page-content-wrap"> 
                     <!-- START WIDGETS -->                    
                     <div class="row">
+                        <% if current_user.socials.where(provider: "instagram").empty? %>
+                        <div class="row text-center">
+                                <a href="https://api.instagram.com/oauth/authorize/?client_id=fdaf0607c4c04ac5b0dd5c2e30f56fd3&redirect_uri=http://localhost:3000/instagram_redirect&response_type=code" class="btn btn-primary btn-lg" style="background-color: #125688;"><i class="fa fa-instagram"></i> Add Instagram Account</a>
+                            </div>
+                            <br >
+                        <% end %>
                         <div class="col-md-3">
                             <!-- START WIDGET MESSAGES -->
-                            <div class="widget widget-default widget-item-icon" onclick="location.href='pages-messages.html';">
+                            <div class="widget widget-default widget-item-icon">
                                 <div class="widget-item-left">
                                     <span class="fa fa-hourglass-half"></span>
                                 </div>                             
@@ -86,7 +87,7 @@
                         </div>
                         <div class="col-md-3">
                             <!-- START WIDGET MESSAGES -->
-                            <div class="widget widget-default widget-item-icon" onclick="location.href='pages-messages.html';">
+                            <div class="widget widget-default widget-item-icon">
                                 <div class="widget-item-left">
                                     <span class="fa fa-hashtag"></span>
                                 </div>                             
@@ -133,8 +134,8 @@
                     <!-- END WIDGETS -->                    
 
                     <div class="row">
-                        <div class="col-md-4"> 
-                            <!-- START SALES & EVENTS BLOCK -->
+                        <div class="col-md-6 col-md-offset-3"> 
+                            <!-- Tnstagram Stats -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <div class="panel-title-box">
@@ -144,65 +145,17 @@
                                 </div>
                                 <div class="panel-body padding-0">
                                     <div class="chart-holder" id="dashboard-line-1" style="height: 200px;">
-                                        <% if !current_user.ig_id.blank? %>
-                                            <h4 class="text-center">IG Name: <%= current_user.ig_username %></h4>
-                                            <h4 class="text-center">Number of followers: <%= session[:ig_followers] %></h4>
+                                        <% if !ig_user.blank? %>
+                                            <div class="text">
+                                                <h4 class="text-center">Instagram handle: <%= ig_user.username %></h4>
+                                                <h4 class="text-center">Number of followers: <%= ig_user.followers %></h4>
+                                            </div>
                                         <% end %>
                                     </div>
                                 </div>
                             </div>
-                            <!-- END SALES & EVENTS BLOCK -->
-                            
+                            <!-- END  Tnstagram Stats-->
                         </div>
-                        <div class="col-md-4">
-                            
-                            <!-- START USERS ACTIVITY BLOCK -->
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <div class="panel-title-box">
-                                        <h3>Users Activity</h3>
-                                        <span>Users vs returning</span>
-                                    </div>                                    
-                                    <ul class="panel-controls" style="margin-top: 2px;">
-                                        <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
-                                        <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
-                                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>                                       
-                                    </ul>                                    
-                                </div>                                
-                                <div class="panel-body padding-0">
-                                    <div class="chart-holder" id="dashboard-bar-1" style="height: 200px;"></div>
-                                </div>                                    
-                            </div>
-                            <!-- END USERS ACTIVITY BLOCK -->
-                            
-                        </div>
-                        <div class="col-md-4">
-                            
-                            <!-- START VISITORS BLOCK -->
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <div class="panel-title-box">
-                                        <h3>Visitors</h3>
-                                        <span>Visitors (last month)</span>
-                                    </div>
-                                    <ul class="panel-controls" style="margin-top: 2px;">
-                                        <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
-                                        <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-cog"></span></a>                                        
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span> Collapse</a></li>
-                                                <li><a href="#" class="panel-remove"><span class="fa fa-times"></span> Remove</a></li>
-                                            </ul>                                        
-                                        </li>                                        
-                                    </ul>
-                                </div>
-                                <div class="panel-body padding-0">
-                                    <div class="chart-holder" id="dashboard-donut-1" style="height: 200px;"></div>
-                                </div>
-                            </div>
-                            <!-- END VISITORS BLOCK -->
-                            
                         </div>
                     </div>
 

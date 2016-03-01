@@ -1,0 +1,11 @@
+<div class="row center">
+  <%= link_to  brand_campaign_path(@campaign.brand_id, @campaign.id), remote: true do %>
+    <div id="campaign_view" class="col-md-4 inactive">View</div>
+  <% end %>
+  <%= link_to  brand_campaign_stats_path(@campaign.brand_id, @campaign.id), remote: true do %>
+    <div id="campaign_stats" class="col-md-4">Stats</div>
+  <% end %>
+  <%= link_to  brand_campaign_invite_path(@campaign.brand_id, @campaign.id), remote: true do %>
+    <div id="campaign_invite" class="col-md-4">Invite</div>
+  <% end %>
+</div>
