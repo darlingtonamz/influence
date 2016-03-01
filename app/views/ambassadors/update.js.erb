@@ -1,1 +1,2 @@
-$("#amb_card_<%= @ambassador.id %>").html("<%= escape_javascript(render 'brands/index', brands: @brands) %>")
+$("#amb_card_<%= @ambassador.id %>").html("<%= @action +' '+@ambassador.campaign.name.capitalize %>")
+        .delay(2000).hide("slow");

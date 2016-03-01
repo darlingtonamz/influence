@@ -57,7 +57,17 @@
                         <%= link_to ambassadors_campaigns_path do%>
                             <span class="fa fa-hashtag"></span> <span class="xn-text">View Campaigns Invites</span>
                         <% end %>
-                    </li> 
+                    </li>
+                    <li>
+                        <%= link_to ongoing_list_path, remote: true do%>
+                            <span class="fa fa-hashtag"></span> <span class="xn-text">Ongoing Campaigns</span>
+                        <% end %>
+                    </li>
+                    <li>
+                        <%= link_to '#', remote: true do%>
+                            <span class="fa fa-hashtag"></span> <span class="xn-text">View Campaigns Invites</span>
+                        <% end %>
+                    </li>
                 </ul>
                 <!-- END X-NAVIGATION -->
             </div>

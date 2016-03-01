@@ -3,16 +3,32 @@
     <%= render 'top_mini_menu' %>
       <div class="card-head"><header>Campaign Details</header>
         <div class="tools">
-          <%= link_to  edit_brand_campaign_path(@campaign.brand_id, @campaign.id), remote: true do %>
-              <span><i class="fa fa-pencil"></i> Edit</span>
+          <% if current_user.id == @campaign.brand.user_id %>
+              <%= link_to  edit_brand_campaign_path(@campaign.brand_id, @campaign.id), remote: true do %>
+                  <span><i class="fa fa-pencil"></i> Edit</span>
+              <% end %>
           <% end %>
+
         </div>
     </div>
     <div class="white no-pad">
       <%= @campaign.name%>
       <div id="show_inner">
-        <% if (user.role == 'influencer' && Ambassador.where(user_id: user.id, campaign_id: @campaign.id).first.status == "accepted") %>
-            Copy the following
+        <% if (user.role == 'influencer') %>
+            <% amb = Ambassador.where(user_id: user.id, campaign_id: @campaign.id).first %>
+            <% if amb.status == "accepted" %>
+                Copy the following
+                URL (link) <hr>
+                http://swayup.co/ambassadors/<%= amb.id %>/redirect
+                <hr>
+                Social<hr>
+                #<% @campaign.tag %>
+                <hr>
+                Embbed<br>
+                <textarea name="" id="" cols="30" rows="10">
+                  \<script\>var ambid=<% amb.id %>;var script = document.createElement('script');script.src = "geo.js";document.head.appendChild(script);\</script\>
+                </textarea>
+            <% end %>
         <% end %>
       </div>
     </div>
