@@ -1,0 +1,96 @@
+<div class="card card-outlined">
+  <div class="row style-accent-bright">
+    <div class="card-head"><header>Create a Campaign</header>
+      <!-- <div class="tools">
+        <span><i class="fa fa-pencil"></i> Edit</span>
+
+      </div> -->
+    </div>
+  </div>
+  <%= form_for [@brand, @campaign]  do |f|%>
+      <div class="form-group floating-label spacing">
+        <%= f.text_field :name, size: '80', class: "form-control", require:''%>
+        <label>Campaign name</label>
+      </div>
+      <div class="form-group floating-label spacing">
+        <%= f.text_field :url, size: '80', class: "form-control", required:''%><label>Campaign URL</label>
+      </div>
+      <div class="mui-textfield hashtag">
+        <svg height="24" width="24" class="float-top-right">
+          <circle id="hash_circle" cx="12" cy="12" r="10" stroke="#ccc" stroke-width="1" fill="#ccc" />
+        </svg>
+        <%= f.text_field :url, size: '80', placeholder: "Campaign #hashtag", id: "hashtag", class: "form-control form-group"%>
+      </div>
+
+      <!--<div class="field">
+      <% #f.select :country_ids, @countries.collect {|p| [ p.nicename, p.id ] }, {prompt: 'Country'}, {multiple: true} %>
+    </div>-->
+      <div class="form-group floating-label spacing">
+        <%= f.text_field :description, size: '80', class: "form-control"%><label>Country</label>
+      </div>
+      <div class="form-group floating-label spacing">
+        <%= f.text_area :description, size: '80', class: "form-control"%><label>Description</label>
+      </div>
+
+      <br>
+      <div class="mui-textfield">
+        <label class="form-control"><span style="color:rgb(161, 155, 155)">Interest</span>
+          <div class="btn-group pull-right" data-toggle="buttons">
+            <label class="btn ink-reaction btn-raised btn-accent-bright">
+              <input type="radio" name="options" id="option1"><i class="fa fa-heart fa-fw"></i> Fashion
+            </label>
+            <label class="btn ink-reaction btn-raised btn-accent-bright">
+              <input type="radio" name="options" id="option2"><i class="fa fa-rocket fa-fw"></i> Entertainment
+            </label>
+            <label class="btn ink-reaction btn-raised btn-accent-bright">
+              <input type="radio" name="options" id="option3"><i class="fa fa-cutlery fa-fw"></i> Food
+            </label>
+          </div></label>
+      </div><br>
+      <div class="form-group floating-label spacing">
+        <%= f.submit 'Create Campaign' , class:"btn ink-reaction btn-lg btn-accent", id: "submit", disabled: true %>
+      </div>
+  <% end %>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Your code
+        $('#hashtag').on('keyup', function() {
+            console.log("dfdjfhdjfhdjfhdjfhd;iodsioudiofubn");
+            if ($('#hastag').val().length > 2){
+                var hashtag = $('.hashtag').val();
+                console.log("H: "+hashtag);
+                //getting the number of posts under a hashtags
+                $.ajax({
+                    type: 'GET',
+                    dataType: 'jsonp',
+                    url: "https://api.instagram.com/v1/tags/" + hashtag + "?access_token=806401368.5aa13be.4a08df065cbb41469c9cc20041432d3b",
+                    success: function(data) {
+                        if (data.data.media_count === 0){
+                            // turn green and enable submit
+                            good();
+                        }else {
+                            // turn red and disable submit
+                            bad();
+                        }
+                    }
+                });
+            }else{
+                // turn red or disable button
+                bad();
+            };
+        });
+
+        function good(){
+            $("#submit").attr('disabled','false');
+            $("#hashcircle").attr('fill','green');
+        }
+
+        function bad(){
+            $("#submit").attr('disabled','true');
+            $("#hashcircle").attr('fill','red');
+        }
+    });
+
+</script>

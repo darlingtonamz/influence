@@ -7,7 +7,7 @@
           <% end %>
           <header><%= brand.name %></header>
           <div class="tools">
-          <%= link_to "/brands/#{brand.id}/campaigns/new" do %>
+          <%= link_to "/brands/#{brand.id}/campaigns/new", remote: true do %>
             <div class="btn btn-primary">+ Add Campaign</div>
         <% end %>
         <a class="btn btn-icon-toggle btn-collapse"><i class="fa fa-angle-down"></i></a>
