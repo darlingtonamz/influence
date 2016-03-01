@@ -58,7 +58,7 @@ class CampaignsController < ApplicationController
   def invite
     @campaign = Campaign.find(params[:campaign_id])
     @ambassador = Ambassador.new
-    @users = User.role('influencer')
+    @users = User.is_influencer #role('influencer')
     respond_to do |format|
       format.js
     end

@@ -35,7 +35,17 @@ class AmbassadorsController < ApplicationController
   end
 
   def show
-   render "ambassadors/campaigns"
+    @invites = Ambassador.where(user_id: current_user, status: 'pending')
+    render "ambassadors/campaigns"
+  end
+
+  def update
+    @ambassador = Ambassador.find(params[:id])
+    if @ambassador.update_attributes(ambassador_param)
+      respond_to do |format|
+        format.js
+      end
+    end
   end
 
   def instagram_redirect
