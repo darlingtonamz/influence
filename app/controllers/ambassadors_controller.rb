@@ -41,10 +41,18 @@ class AmbassadorsController < ApplicationController
 
   def update
     @ambassador = Ambassador.find(params[:id])
+    @action = ambassador_param[:status]
     if @ambassador.update_attributes(ambassador_param)
       respond_to do |format|
         format.js
       end
+    end
+  end
+
+  def ongoing_list
+    @ambassadors = Ambassador.where(user_id: current_user, status: 'accepted')
+    respond_to do |format|
+      format.js
     end
   end
 

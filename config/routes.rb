@@ -5,6 +5,7 @@ Influence::Application.routes.draw do
     resources :impressions
     resources :leads
   end
+  get '/ongoing_list', to: 'ambassadors#ongoing_list'
   get '/ambassadors/campaigns', to: 'ambassadors#campaigns'
   get '/instagram_redirect', to: 'ambassadors#instagram_redirect', as: :instagram_redirect
 
