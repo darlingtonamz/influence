@@ -59,3 +59,14 @@
 .inactive{
   border-bottom: 3px solid #ea95fb;
 }
+
+.form-group label{
+  margin: -19px 0px 0px !important;
+}
+
+.float-top-right{
+  position: relative;
+  float: right;
+  top: 5px;
+  right: 10px;
+}

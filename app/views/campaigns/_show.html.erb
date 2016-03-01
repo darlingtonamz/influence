@@ -18,16 +18,17 @@
             <% amb = Ambassador.where(user_id: user.id, campaign_id: @campaign.id).first %>
             <% if amb.status == "accepted" %>
                 Copy the following
-                URL (link) <hr>
+                <hr/>
+                <div>URL (link)</div>
                 http://swayup.co/ambassadors/<%= amb.id %>/redirect
                 <hr>
-                Social<hr>
+                <div>Social</div>
                 #<% @campaign.tag %>
                 <hr>
-                Embbed<br>
-                <textarea name="" id="" cols="30" rows="10">
-                  \<script\>var ambid=<% amb.id %>;var script = document.createElement('script');script.src = "geo.js";document.head.appendChild(script);\</script\>
-                </textarea>
+                <div>Embed code</div>
+                <pre><code>&lt;div class=&quot;pry_card card&quot;&gt;&lt;/div&gt;&lt;script&gt;var ambid=<%= amb.id %>;var script = document.createElement('script');script.src = "geo.js";document.head.appendChild(script);&lt;/script&gt;
+                    </code>
+                </pre>
             <% end %>
         <% end %>
       </div>

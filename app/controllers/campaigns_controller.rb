@@ -24,6 +24,9 @@ class CampaignsController < ApplicationController
     @brand = Brand.find(params[:brand_id])
     @campaign = @brand.campaigns.build
     @interests = Interest.all
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create
