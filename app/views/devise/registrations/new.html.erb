@@ -26,9 +26,7 @@
    
     
     <%= f.password_field :password_confirmation, autocomplete: "off",:class => "form-styling", :placeholder => "Confirm Password" %> <br>
-
-      <% f.radio_button(:role, "brand") %><% f.label("Brand") %><br>
-      <% f.radio_button(:role, "influencer") %><% f.label("Influencer") %>
+    <%= f.hidden_field :role, value: params[:role] %>
 
   <div class="actions">
     <%= f.submit "Sign up", :class => "btn-sign"  %>
