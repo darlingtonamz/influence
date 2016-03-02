@@ -4,7 +4,7 @@ class AmbassadorsController < ApplicationController
     if (!current_user)
       redirect_to "/"
     end
-    @ambassadors = Ambassador.find_all_by_user_id(params[:user_id]);
+    @ambassadors = Ambassador.where(user_id: current_user.id, status: 'accepted');
     @user_id = params[:user_id];
 
     if current_user.socials.count > 0
