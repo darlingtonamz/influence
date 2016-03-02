@@ -21,7 +21,7 @@
   <body class="menubar-hoverable header-fixed">
 
     <!-- BEGIN HEADER-->
-    <header id="header" >
+    <header id="header" class="header-inverse">
     <%= render 'top_bar.html.erb'%>
       </header>
       <!-- END HEADER-->
@@ -32,11 +32,12 @@
         <!-- BEGIN CONTENT-->
         <div id="content">
             <section>
+              <div class="section-header"></div>
                 <div class="section-body">
                     <% if @brands.empty? %>
                       <%= render "zero" %>
                     <% else %>
-                      <%= render "campaigns/index", brand: @brands[0] %>
+                      <%= render "campaigns/index", brand: @brands[1] %>
                     <% end %>
                 </div>
             </section>
@@ -44,70 +45,7 @@
         <!-- END CONTENT -->
 
         <!-- BEGIN MENUBAR-->
-        <div id="menubar" class="menubar-inverse ">
-          <div class="menubar-fixed-panel">
-            <div>
-              <a class="btn btn-icon-toggle btn-default menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
-                <i class="fa fa-bars"></i>
-              </a>
-            </div>
-            <div class="expanded">
-              <a href="#">
-                <span class="text-lg text-bold text-primary ">Sway&nbsp;Up</span>
-              </a>
-            </div>
-          </div>
-          <div class="menubar-scroll-panel">
-
-            <!-- BEGIN MAIN MENU -->
-            <ul id="main-menu" class="gui-controls">
-
-              <!-- BEGIN DASHBOARD -->
-              <li>
-                <a href="#" class="active">
-                  <div class="gui-icon"><i class="fa fa-home"></i></div>
-                  <span class="title">Brand Tracker</span>
-                </a>
-              </li><!--end /menu-li -->
-              <!-- END DASHBOARD -->
-
-              <!-- BEGIN DASHBOARD -->
-              <li>
-                <%= link_to ({:action=>"new", :controller=>"brands", remote: true}) do %>
-                  <div class="gui-icon"><i class="fa fa-plus fa-fw"></i></div>
-                  <span class="title">Create Brand</span>
-                <% end %>
-              </li><!--end /menu-li -->
-              <!-- END DASHBOARD -->
-              <li>
-                <a href="#">
-                  <div class="gui-icon"><i class="fa fa-line-chart"></i></div>
-                  <span class="title">Live Campaigns</span>
-                </a>
-              </li>
-              <li>
-                <%= link_to ({url: '/brand_list', remote: true}) do %>
-                  <div class="gui-icon"><i class="fa fa-globe"></i></div>
-
-                    <span class="title">All Brands</span>
-                <% end %>
-              </li>
-              <li>
-                <a href="#">
-                  <div class="gui-icon"><i class="fa fa-volume-up"></i></div>
-                  <span class="title">All Campaigns</span>
-                </a>
-              </li>
-            </ul><!--end .main-menu -->
-            <!-- END MAIN MENU -->
-
-            <div class="menubar-foot-panel">
-              <small class="no-linebreak hidden-folded">
-                <span class="opacity-75">Copyright &copy; 2016</span> <strong>SwayUp</strong>
-              </small>
-            </div>
-          </div><!--end .menubar-scroll-panel-->
-        </div><!--end #menubar-->
+       <%= render 'side_bar.html.erb' %>
         <!-- END MENUBAR -->
 
       </div><!--end #base-->

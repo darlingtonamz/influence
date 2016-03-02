@@ -41,7 +41,7 @@
 
 </script>
 <div class="card card-outlined">
-  <div class="row style-accent-bright">
+  <div class="row style-accent">
     <div class="card-head"><header>Create a Campaign</header>
       <!-- <div class="tools">
         <span><i class="fa fa-pencil"></i> Edit</span>
@@ -51,7 +51,7 @@
   </div>
   <%= form_for [@brand, @campaign]  do |f|%>
       <div class="form-group floating-label spacing">
-        <%= f.text_field :name, size: '80', class: "form-control", placeholder: "Campaign name", require:''%>
+        <%= f.text_field :name, size: '80', class: "form-control", placeholder: "Campaign name", required:''%>
         <label></label>
       </div>
       <div class="form-group floating-label spacing">

@@ -1,15 +1,25 @@
+<div class="col-md-6 col-md-offset-3">
 <div class="card card-outline">
-    <h1>Create a new brand</h1>
-    <%= form_for brand, remote: true do |f|%>
-        <div class="field">
-          <%= f.text_field :name, size: '80', placeholder: "Brand name"%>
-        </div>
-        <div class="field">
-          <%= f.text_field :description, size: '80', placeholder: "Description"%>
-        </div>
-        <div class="field">
-          <%= f.submit %>
-        </div>
-    <% end %>
+  <div class="card-head style-accent">
+  <h1>Create a new brand</h1>
+</div>
+<div class="card-body">
+  <%= form_for @brand do |f|%>
+    <div class="form-group floating-label spacing">
+      <%= f.text_field :name, size: '80', class:"form-control" %>
+      <label>Name</label>
+    </div>
+    <div class="form-group floating-label spacing">
+      <%= f.text_field :description, size: '80', class:"form-control"%>
+      <label>Description</label>
+    </div>
+    <div class="form-group floating-label spacing">
+      <%= f.submit 'Create Brand' , class:"btn ink-reaction btn-lg btn-accent" %>
+    </div>
+
+<% end %>
+
   <div id="cerror"></div>
+</div>
+</div>
 </div>
