@@ -121,6 +121,8 @@ $(window).scroll(function(){
 
 
 function sendUpdate(){
+    var hov = ipData.hover_sec;
+    var iv = ipData.inView_sec;
   $.ajax({
     url: "http://localhost:3000/ambassadors/1/impressions",
     xhrFields: { withCredentials: true },
@@ -128,8 +130,8 @@ function sendUpdate(){
     data: {
       impression:{
         source: window.location.href,
-        hover_time:ipData.hover_sec,
-        view_time: ipData.inView_sec,
+        hover_time: hov,
+        view_time: iv,
         city: ipData.city,
         country: ipData.country,
         ip: ipData.ip,
@@ -137,5 +139,8 @@ function sendUpdate(){
         coord: ipData.loc
       }
     }
-  }).done();
+  }).done(function(){
+      ipData.hover_sec -= hov;
+      ipData.inView_sec -= iv;
+  });
 }
