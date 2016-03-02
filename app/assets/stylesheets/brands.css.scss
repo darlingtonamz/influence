@@ -70,3 +70,14 @@
   top: 5px;
   right: 10px;
 }
+
+#hash-circle{
+  min-height: 20px;
+  min-width: 20px;
+  background: #ccc;
+  box-shadow: 2px 2px #ccc;
+}
+
+.circle{
+  border-radius: 50%;
+}
