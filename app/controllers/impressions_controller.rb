@@ -2,7 +2,7 @@ class ImpressionsController < ApplicationController
   skip_before_filter  :verify_authenticity_token
 
   def create
-    @impression = Impression.where(source: impression_param[:ip], ambassador_id: params[:ambassador_id]).first
+    @impression = Impression.where(ip: impression_param[:ip], ambassador_id: params[:ambassador_id]).first
     respond_to do |format|
       if !@impression
         @impression = Impression.new(impression_param)
