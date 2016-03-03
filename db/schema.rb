@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160302210634) do
+ActiveRecord::Schema.define(:version => 20160303111130) do
 
   create_table "ambassador_requests", :force => true do |t|
     t.integer  "ambassador_id"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20160302210634) do
     t.datetime "updated_at",  :null => false
     t.text     "tag"
     t.string   "image"
+    t.integer  "interest_id"
   end
 
   create_table "campaigns_countries", :id => false, :force => true do |t|
@@ -134,6 +135,7 @@ ActiveRecord::Schema.define(:version => 20160302210634) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "role"
+    t.integer  "interest_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

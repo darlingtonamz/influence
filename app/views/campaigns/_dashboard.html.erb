@@ -44,7 +44,7 @@ Web / Organic Data
       <div class="card-body no-padding">
         <div class="alert alert-callout alert-success no-margin">
 
-          <strong class="text-xl"><%= ((@impressions.inject(0){|sum,x| sum + x.view_time }) / @impressions.count) %></strong><br/>
+          <strong class="text-xl"><%= ((@impressions.inject(0){|sum,x| sum + x.view_time }) / (@impressions.count == 0 ? 1 : @impressions.count)) %></strong><br/>
           <span class="opacity-50">View (sec) per Impression</span>
         </div>
       </div><!--end .card-body -->

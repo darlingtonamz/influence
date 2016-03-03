@@ -17,6 +17,7 @@ gem 'pry'
 gem 'test-unit'
 
 gem 'carrierwave'
+#gem 'rmagick'
 
 group :production do
   gem 'rails_12factor'

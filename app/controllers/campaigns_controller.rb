@@ -32,6 +32,7 @@ class CampaignsController < ApplicationController
   def create
     @brand = Brand.find(params[:brand_id])
     @campaign = @brand.campaigns.build(campaign_param)
+    @campaign.interest_id = params[:campaign][:interest].to_i
     @campaign.countries.push(Country.find_by_iso('GH'))
     puts '#'*100
     puts campaign_param
@@ -80,7 +81,7 @@ class CampaignsController < ApplicationController
 
   private
     def campaign_param
-      params.require(:campaign).permit(:name, :url, :description, :image, :tag, interest_ids: [])
+      params.require(:campaign).permit(:name, :url, :description, :image, :tag)
     end
 
     def interest_arr

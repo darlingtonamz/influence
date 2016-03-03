@@ -2,16 +2,27 @@ These are the Influencers that can push your business to the next level
 
 <% @users.each do |u| %>
     <div id="user_card_<%= u.id %>" class="card cprofile">
-      <div>
-        <%= u.email %>
+      <% instag = u.socials.where(provider: 'instagram').first %>
+      <div class="ctitle"><%= instag.full_name %></div>
+      <div class="col-sm-6">
+        <%= image_tag instag.photo, class:'circle shad px100'%>
       </div>
-      <%= form_for ambassador, :url => {controller: 'ambassadors', action: 'create'}, remote: true do |f|%>
-          <%= f.hidden_field :user_id, value: u.id %>
-          <%= f.hidden_field :campaign_id, value: @campaign.id %>
-          <%= f.hidden_field :status, value: 'pending' %>
-          <%= button_tag(type: 'submit', alt: 'invite', class: 'btn btn-primary') do %>
-              invite
-          <% end %>
-      <% end %>
+      <div class="col-sm-6">
+        <div>
+          <%= u.email %>
+        </div>
+        <div>
+          <%= instag.followers + " followers" %>
+        </div>
+        <%= form_for ambassador, :url => {controller: 'ambassadors', action: 'create'}, remote: true do |f|%>
+            <%= f.hidden_field :user_id, value: u.id %>
+            <%= f.hidden_field :campaign_id, value: @campaign.id %>
+            <%= f.hidden_field :status, value: 'pending' %>
+            <%= button_tag(type: 'submit', alt: 'invite', class: 'btn btn-primary') do %>
+                invite
+            <% end %>
+        <% end %>
+      </div>
+
     </div>
 <% end %>
