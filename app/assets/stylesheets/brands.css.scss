@@ -31,7 +31,7 @@
 }
 
 .zero-main{
-  font-size: 60px;
+  font-size: 32px;
   color: #216655;
   font-weight: 700;
 }
@@ -80,4 +80,27 @@
 
 .circle{
   border-radius: 50%;
+}
+
+ .logo a {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  width: 120px;
+  height: 42px;
+  background: url("/images/swayup-logo-final.png") no-repeat center;
+  background-size: 110px 42px;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+i.fa.fa-home {
+  color: #583e7e;
 }
