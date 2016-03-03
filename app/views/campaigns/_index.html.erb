@@ -21,13 +21,11 @@
   <%= render "zero" %>
   <% else %>
   <% brand.campaigns.each do |c| %>
-  <div>
     <%= link_to "/brands/#{c.brand_id}/campaigns/#{c.id}", remote: true do %>
-    <div class="card col-md-4"><%= c.name %></div>
+    <div class="card col-md-5"><h4><%= c.name %></h4></div>
     <% end %>
     <% end %>
     <% end %>
-  </div>
 </div>
 </div>
 

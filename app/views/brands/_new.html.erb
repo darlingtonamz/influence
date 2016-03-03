@@ -1,9 +1,9 @@
 <div class="col-md-6 col-md-offset-3">
 <div class="card card-outline style-accent">
   <div class="card-head">
-  <h1 class="text-center">Create a new brand</h1>
+  <h1 style="margin-bottom: 40px;">Create New Brand</h1>
 </div>
-<div class="white no-pad">
+<div class="white no-pad"><br>
   <%= form_for @brand do |f|%>
     <div class="form-group floating-label spacing">
       <%= f.text_field :name, size: '80', class:"form-control" %>
@@ -14,7 +14,7 @@
       <label>Description</label>
     </div>
     <div class="form-group floating-label spacing">
-      <%= f.submit 'Create Brand' , class:"btn ink-reaction btn-lg btn-accent" %>
+      <%= f.submit 'Create Brand' , class:"btn btn-raised ink-reaction btn-lg btn-accent" %>
     </div>
 
 <% end %>

@@ -69,13 +69,10 @@ ActiveRecord::Schema.define(:version => 20160302210634) do
     t.string   "source"
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
-    t.string   "ip"
-    t.integer  "view_time",     :default => 0
-    t.integer  "hover_time",    :default => 0
-    t.string   "city"
-    t.string   "region"
+    t.string   "session_id"
+    t.integer  "clicks",        :default => 0
+    t.integer  "hover_time"
     t.string   "country"
-    t.string   "coord"
   end
 
   create_table "interests", :force => true do |t|
