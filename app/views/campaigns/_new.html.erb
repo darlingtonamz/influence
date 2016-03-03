@@ -59,7 +59,7 @@
       </div>
       <div class="form-group mui-textfield hashtag">
         <div id="hash-circle" class="circle float-top-right"></div>
-        <%= f.text_field :url, size: '80', placeholder: "Campaign #hashtag", id: "hashtag", class: "form-control form-group"%>
+        <%= f.text_field :tag, size: '80', placeholder: "Campaign #hashtag", id: "hashtag", class: "form-control form-group"%>
         <label></label>
       </div>
 
@@ -88,6 +88,10 @@
             </label>
           </div></label>
       </div><br>
+
+      <div class="form-group">
+        <%= f.file_field :image %>
+      </div>
       <div class="form-group floating-label spacing">
         <%= f.submit 'Create Campaign' , class:"btn ink-reaction btn-lg btn-accent", id: "submit", disabled: true %>
       </div>

@@ -1,1 +1,73 @@
-Edit your campaign
+<script>
+    $(document).ready(function () {
+        $('#hashtag').on('keyup', function() {
+            console.log("dfdjfhdjfhdjfhdjfhd;iodsioudiofubn");
+            if ($('#hashtag').val().length > 2){
+                var hashtag = $('#hashtag').val();
+                console.log("H: "+hashtag);
+                //getting the number of posts under a hashtags
+                $.ajax({
+                    type: 'GET',
+                    dataType: 'jsonp',
+                    url: "https://api.instagram.com/v1/tags/" + hashtag + "?access_token=806401368.5aa13be.4a08df065cbb41469c9cc20041432d3b",
+                    success: function(data) {
+                        if (data.data.media_count === 0){
+                            // turn green and enable submit
+                            good();
+                        }else {
+                            // turn red and disable submit
+                            bad();
+                        }
+                    }
+                });
+            }else{
+                // turn red or disable button
+                bad();
+            };
+        });
+
+        function good(){
+            console.log('good');
+            $("#submit").prop('disabled', false);
+            $("#hash-circle").css('background','green');
+        }
+
+        function bad(){
+            console.log('bad');
+            $("#submit").prop('disabled', true);
+            $("#hash-circle").css('background','red');
+        }
+    });
+
+</script>
+<div>
+  Edit your campaign
+
+  <%= form_for [@brand, @campaign], html: {multipart: true, method: :put}, remote: true do |f|%>
+      <div class="form-group floating-label spacing">
+        <%= f.text_field :name, value: @campaign.name, size: '80', class: "form-control", placeholder: "Campaign name", require:''%>
+        <label></label>
+      </div>
+      <div class="form-group floating-label spacing">
+        <%= f.text_field :url, value: @campaign.url, size: '80', class: "form-control", placeholder: "Campaign URL", required:''%><label></label>
+      </div>
+      <div class="form-group mui-textfield hashtag">
+        <div id="hash-circle" class="circle float-top-right"></div>
+        <%= f.text_field :tag, value: @campaign.tag, size: '80', placeholder: "Campaign #hashtag", id: "hashtag", class: "form-control form-group"%>
+        <label></label>
+      </div>
+      <div class="form-group floating-label spacing">
+        <%= f.text_area :description, value: @campaign.description, size: '80', class: "form-control", placeholder: "Description" %><label></label>
+      </div>
+
+      <br>
+
+      <div class="form-group">
+        <%= f.file_field :image %>
+      </div>
+
+      <div class="form-group floating-label spacing">
+        <%= f.submit 'Update Campaign' , class:"btn ink-reaction btn-lg btn-accent", id: "submit" %>
+      </div>
+  <% end %>
+</div>

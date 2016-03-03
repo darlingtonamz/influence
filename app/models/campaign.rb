@@ -7,5 +7,7 @@ class Campaign < ActiveRecord::Base
   has_many   :ambassador_requests
   has_many :impressions, through: :ambassadors
 
-  attr_accessible :name, :description, :url, :country_ids, :interest_ids
+  mount_uploader :image, ImageUploader
+
+  attr_accessible :name, :description, :url, :country_ids, :interest_ids, :image, :tag
 end

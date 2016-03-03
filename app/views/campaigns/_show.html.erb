@@ -12,7 +12,26 @@
         </div>
     </div>
     <div class="white no-pad">
-      <%= @campaign.name%>
+      <div class="field">
+        <%= @campaign.name%>
+      </div>
+
+      <div class="field">
+        <%= @campaign.url%>
+      </div>
+
+      <div class="field">
+        <%= @campaign.tag%>
+      </div>
+
+      <div class="field">
+        <%= @campaign.description%>
+      </div>
+
+      <div class="field">
+        <%= image_tag @campaign.image.url%>
+      </div>
+
       <div id="show_inner">
         <% if (user.role == 'influencer') %>
             <% amb = Ambassador.where(user_id: user.id, campaign_id: @campaign.id).first %>

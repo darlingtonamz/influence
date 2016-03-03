@@ -44,10 +44,20 @@ class CampaignsController < ApplicationController
   end
 
   def edit
+    @brand = Brand.find(params[:brand_id])
     @campaign = Campaign.find_by_id(params[:id])
     respond_to do |format|
       format.html
       format.js
+    end
+  end
+
+  def update
+    @campaign = Campaign.find(params[:id])
+    if @campaign.update_attributes(campaign_param)
+      respond_to do |format|
+        format.js{render 'show'}
+      end
     end
   end
 
@@ -70,7 +80,7 @@ class CampaignsController < ApplicationController
 
   private
     def campaign_param
-      params.require(:campaign).permit(:name, :url, :description, interest_ids: [])
+      params.require(:campaign).permit(:name, :url, :description, :image, :tag, interest_ids: [])
     end
 
     def interest_arr
