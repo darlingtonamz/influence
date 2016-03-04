@@ -5,6 +5,7 @@ $( document ).ready(function() {
   var totalLikes = 0;
   var totalComments = 0;
   var postsCount = 0;
+  console.log(hashtag);
   //Getting likes & comments INSTAGRAM API
   $.ajax({
     type: 'GET',
@@ -19,11 +20,9 @@ $( document ).ready(function() {
       if (data.pagination.next_url === undefined) {
         $('.totalLikes').text(totalLikes);
         $('.totalComments').text(totalComments);
-        $('.postsCount').text(postsCount );
       } else {
         $('.totalLikes').text(totalLikes);
         $('.totalComments').text(totalComments);
-        $('.postsCount').text(postsCount);
         getNextPosts(data.pagination.next_url, totalLikes, totalComments, postsCount);
       }
 
@@ -54,9 +53,8 @@ function getNextPosts(url, likes, comments, count) {
           likes += nxtData.data[i].likes.count;
           comments += nxtData.data[i].comments.count;
         }
-        $('.totalLikes').text(likes + ' Likes');
-        $('.totalComments').text(comments + ' Comments');
-        $('.postsCount').text(count + ' Post Count');
+        $('.totalLikes').text(likes);
+        $('.totalComments').text(comments);
       console.log("last posts request");
       } else {
         count += nxtData.data.length;
@@ -65,9 +63,8 @@ function getNextPosts(url, likes, comments, count) {
           likes += nxtData.data[i].likes.count;
           comments += nxtData.data[i].comments.count;
         } 
-        $('.totalLikes').text(likes + ' Likes');
-        $('.totalComments').text(comments + ' Comments');
-        $('.postsCount').text(count + ' Post Count');
+        $('.totalLikes').text(likes);
+        $('.totalComments').text(comments);
         getNextPosts(newUrl, likes, comments, count);
       }
     }
@@ -78,7 +75,7 @@ function getNextPosts(url, likes, comments, count) {
 
 
 </script>
-<div class="hashtag"><%= @campaign.tag%></div>
+<div class="hashtag">hashcode <!--put campaign hashtag in this div --></div>
 <!-- WEB -->
 Web / Organic Data
 <div class="row">
@@ -88,7 +85,7 @@ Web / Organic Data
       <div class="card-body no-padding">
         <div class="alert alert-callout alert-info no-margin">
           <strong class="text-xl"><%= @impressions.count %></strong><br/>
-          <span class="opacity-50">Impressions</span>
+          <span class="opacity-50">Visits</span>
         </div>
       </div><!--end .card-body -->
     </div><!--end .card -->
@@ -119,14 +116,14 @@ Web / Organic Data
     </div><!--end .card -->
   </div><!--end .col -->
 
-  <!-- Cost per Impression -->
+  <!-- View (sec) per Impression -->
   <div class="col-md-3 col-sm-6">
     <div class="card">
       <div class="card-body no-padding">
         <div class="alert alert-callout alert-success no-margin">
 
           <strong class="text-xl"><%= ((@impressions.inject(0){|sum,x| sum + x.view_time }) / (@impressions.count == 0 ? 1 : @impressions.count)) %></strong><br/>
-          <span class="opacity-50">View (sec) per Impression</span>
+          <span class="opacity-50">View per Visits</span>
         </div>
       </div><!--end .card-body -->
     </div><!--end .card -->
@@ -142,8 +139,8 @@ Social Data
     <div class="card">
       <div class="card-body no-padding">
         <div class="alert alert-callout alert-info no-margin">
-          <strong class="totalLikes text-xl">0</strong><br/>
-          <span class="opacity-50">Likes</span>
+          <strong class="text-xl">0</strong><br/>
+          <span class="opacity-50">Reach</span>
         </div>
       </div><!--end .card-body -->
     </div><!--end .card -->
@@ -154,8 +151,8 @@ Social Data
     <div class="card">
       <div class="card-body no-padding">
         <div class="alert alert-callout alert-warning no-margin">
-          <strong class="totalComments text-xl">901</strong><br/>
-          <span class="opacity-50">Comments</span>
+          <strong class="totalLikes text-xl">901</strong><br/>
+          <span class="opacity-50">Likes</span>
         </div>
       </div><!--end .card-body -->
     </div><!--end .card -->
@@ -166,22 +163,22 @@ Social Data
     <div class="card">
       <div class="card-body no-padding">
         <div class="alert alert-callout alert-danger no-margin">
-          <strong class="text-xl">6.9%</strong><br/>
-          <span class="opacity-50">Likes per Impression</span>
+          <strong class="totalComments text-xl">345</strong><br/>
+          <span class="opacity-50">Comments</span>
 
         </div>
       </div><!--end .card-body -->
     </div><!--end .card -->
   </div><!--end .col -->
 
-  <!-- Cost per Impression -->
+  <!-- Likes per Reach -->
   <div class="col-md-3 col-sm-6">
     <div class="card">
       <div class="card-body no-padding">
         <div class="alert alert-callout alert-success no-margin">
 
-          <strong class="text-xl">$ 0.2</strong><br/>
-          <span class="opacity-50">Cost per Impression</span>
+          <strong class="text-xl">6.9%</strong><br/>
+          <span class="opacity-50">Likes per Reach</span>
         </div>
       </div><!--end .card-body -->
     </div><!--end .card -->
