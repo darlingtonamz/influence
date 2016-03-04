@@ -40,10 +40,10 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <%= link_to brand_list_path, remote: true do%>
           <div class="gui-icon"><i class="fa fa-globe"></i></div>
           <span class="title">All Brands</span>
-        </a>
+        <% end %>
       </li>
       <li>
         <a href="#">

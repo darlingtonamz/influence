@@ -16,7 +16,7 @@ class BrandsController < ApplicationController
     puts '~'*100
     puts @brands
     respond_to do |format|
-      format.js
+      format.js{render "index"}
     end
   end
 

@@ -5,6 +5,7 @@
 /*
  *= require_self
  *= require_tree ./brands
+ *= require shared
  */
 
 .card {
@@ -75,7 +76,7 @@
   min-height: 20px;
   min-width: 20px;
   background: #ccc;
-  box-shadow: 2px 2px #ccc;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
 }
 
 .circle{
@@ -106,6 +107,6 @@ i.fa.fa-home {
 }
 
 .card.col-md-5 {
-  margin-left: 50px;
+  margin-left: 30px;
   margin-bottom: 10px;
 }

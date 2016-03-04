@@ -13,6 +13,7 @@
  *= require_self
  *= require brands/font-awesome.min
  *= require theme-default
+ *= require shared
  */
 @import "bootstrap";
 
@@ -47,3 +48,4 @@
   border-radius: 0;
   background-color: rgba(0,0,0,0.5);
 }
+

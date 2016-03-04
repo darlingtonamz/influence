@@ -1,3 +1,84 @@
+<script>
+  //Getting Total Likes & Comments for Posts
+$( document ).ready(function() {
+  var hashtag = $('.hashtag').text();
+  var totalLikes = 0;
+  var totalComments = 0;
+  var postsCount = 0;
+  //Getting likes & comments INSTAGRAM API
+  $.ajax({
+    type: 'GET',
+    dataType: 'jsonp',
+    url: "https://api.instagram.com/v1/tags/" + hashtag + "/media/recent?access_token=806401368.5aa13be.4a08df065cbb41469c9cc20041432d3b&count=33",
+    success: function(data) {
+      postsCount += data.data.length;
+      for (var i = 0; i < data.data.length; i++) {
+        totalLikes += data.data[i].likes.count;
+        totalComments += data.data[i].comments.count;
+      }
+      if (data.pagination.next_url === undefined) {
+        $('.totalLikes').text(totalLikes);
+        $('.totalComments').text(totalComments);
+        $('.postsCount').text(postsCount );
+      } else {
+        $('.totalLikes').text(totalLikes);
+        $('.totalComments').text(totalComments);
+        $('.postsCount').text(postsCount);
+        getNextPosts(data.pagination.next_url, totalLikes, totalComments, postsCount);
+      }
+
+    }
+  });
+
+  // //getting the number of posts under a hashtags 
+  // $.ajax({
+  //   type: 'GET',
+  //   dataType: 'jsonp',
+  //   url: "https://api.instagram.com/v1/tags/" + hashtag + "?access_token=806401368.5aa13be.4a08df065cbb41469c9cc20041432d3b",
+  //   success: function(data) {
+  // //    $('.noOfPosts').text("#" + hashtag + " : " + data.data.media_count + " posts");
+
+  //   }
+  // });
+
+function getNextPosts(url, likes, comments, count) {
+  $.ajax({
+    type: 'GET',
+    dataType: 'jsonp',
+    url: url,
+    success: function(nxtData) {
+      var newUrl = nxtData.pagination.next_url;
+      if (newUrl === undefined) {
+        count += nxtData.data.length;
+        for (var i = 0; i < nxtData.data.length; i++) {
+          likes += nxtData.data[i].likes.count;
+          comments += nxtData.data[i].comments.count;
+        }
+        $('.totalLikes').text(likes + ' Likes');
+        $('.totalComments').text(comments + ' Comments');
+        $('.postsCount').text(count + ' Post Count');
+      console.log("last posts request");
+      } else {
+        count += nxtData.data.length;
+         console.log(Math.round(count/nxtData.data.length)+ " requests")
+        for (var i = 0; i < nxtData.data.length; i++) {
+          likes += nxtData.data[i].likes.count;
+          comments += nxtData.data[i].comments.count;
+        } 
+        $('.totalLikes').text(likes + ' Likes');
+        $('.totalComments').text(comments + ' Comments');
+        $('.postsCount').text(count + ' Post Count');
+        getNextPosts(newUrl, likes, comments, count);
+      }
+    }
+  });
+
+}
+});
+
+
+</script>
+<div class="hashtag"><%= @campaign.tag%></div>
 <!-- WEB -->
 Web / Organic Data
 <div class="row">
@@ -44,7 +125,7 @@ Web / Organic Data
       <div class="card-body no-padding">
         <div class="alert alert-callout alert-success no-margin">
 
-          <strong class="text-xl"><%= ((@impressions.inject(0){|sum,x| sum + x.view_time }) / @impressions.count) %></strong><br/>
+          <strong class="text-xl"><%= ((@impressions.inject(0){|sum,x| sum + x.view_time }) / (@impressions.count == 0 ? 1 : @impressions.count)) %></strong><br/>
           <span class="opacity-50">View (sec) per Impression</span>
         </div>
       </div><!--end .card-body -->
@@ -61,7 +142,7 @@ Social Data
     <div class="card">
       <div class="card-body no-padding">
         <div class="alert alert-callout alert-info no-margin">
-          <strong class="text-xl">32,829</strong><br/>
+          <strong class="totalLikes text-xl">0</strong><br/>
           <span class="opacity-50">Likes</span>
         </div>
       </div><!--end .card-body -->
@@ -73,7 +154,7 @@ Social Data
     <div class="card">
       <div class="card-body no-padding">
         <div class="alert alert-callout alert-warning no-margin">
-          <strong class="text-xl">901</strong><br/>
+          <strong class="totalComments text-xl">901</strong><br/>
           <span class="opacity-50">Comments</span>
         </div>
       </div><!--end .card-body -->
