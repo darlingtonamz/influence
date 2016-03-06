@@ -4,7 +4,7 @@
   <h1 class="text-center">Create a new brand</h1>
 </div>
 <div class="white no-pad">
-  <%= form_for @brand do |f|%>
+  <%= form_for @brand, remote: true do |f|%>
     <div class="form-group floating-label spacing">
       <%= f.text_field :name, size: '80', class:"form-control" %>
       <label>Name</label>

@@ -5,6 +5,8 @@
   <div class="col-lg-7 col-md-6 center">
     <span class="zero-main">Leverage on our Influencer platform to build your brand</span><br>
     <span class="zero-sub">Click on <strong>"Add brand"</strong> to create one</span><br>
-    <div class="btn btn-primary">Add brand</div>
+    <%= link_to ({:action=>"new", :controller=>"brands", remote: true}) do %>
+        <div class="btn btn-primary">Add brand</div>
+    <% end %>
   </div>
 </div>

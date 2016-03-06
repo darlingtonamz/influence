@@ -32,12 +32,9 @@ class BrandsController < ApplicationController
     @brand.user_id = current_user.id
     respond_to do |format|
       if @brand.save
-        #redirect_to '/brands'
-        #format.js { render "brand_list", :locals => {:id => params[:id]} }
         @brands = current_user.brands
         format.js { render "index"}
       else
-        #redirect_to '/brands/new'
         format.js { render "error"}
       end
     end
@@ -48,6 +45,15 @@ class BrandsController < ApplicationController
     @campaigns = Campaign.find_all_by_brand_id(params[:id])
     respond_to do |format|
       format.js
+    end
+  end
+
+  def destroy
+    @brand = Brand.find_by_id(params[:id])
+    if @brand.destroy
+      respond_to do |format|
+        format.js
+      end
     end
   end
 
