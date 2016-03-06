@@ -18,7 +18,7 @@
 <div class="white no-pad">
 <div class="row">
   <% if brand.campaigns.length == 0 %>
-    <%= render "zero" %>
+    <%= render "campaigns/zero" %>
   <% else %>
      <% brand.campaigns.each do |c| %>
         <div id="card-<%= c.id %>">
