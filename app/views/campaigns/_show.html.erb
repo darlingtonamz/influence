@@ -1,7 +1,12 @@
 <div class="col-md-7 col-md-offset-3">
   <div class="card brand-accent">
     <%= render 'top_mini_menu' %>
-      <div class="card-head"><header>Campaign Details</header>
+      <div class="card-head">
+        <% if (current_user.role == "brand") %>
+            <%= link_to brand_campaigns_path(@campaign.brand), remote: true do %>
+                <i class="fa fa-arrow-left"></i> Back
+            <% end %>
+        <% end %>
         <div class="tools">
           <% if current_user.id == @campaign.brand.user_id %>
               <%= link_to  edit_brand_campaign_path(@campaign.brand_id, @campaign.id), remote: true do %>
@@ -42,25 +47,24 @@
           </div>
         </div>
 
-
-
-
         <% if (user.role == 'influencer') %>
-            <% amb = Ambassador.where(user_id: user.id, campaign_id: @campaign.id).first %>
-            <% if amb.status == "accepted" %>
-                Copy the following
-                <hr/>
-                <div>URL (link)</div>
-                http://swayup.co/ambassadors/<%= amb.id %>/redirect
-                <hr>
-                <div>Social</div>
-                #<%= @campaign.tag %>
-                <hr>
-                <div>Embed code</div>
-                <pre><code>&lt;div class=&quot;pry_card card&quot;&gt;&lt;/div&gt;&lt;script&gt;var ambid=<%= amb.id %>;var script = document.createElement('script');script.src = "geo.js";document.head.appendChild(script);&lt;/script&gt;
-                    </code>
-                </pre>
-            <% end %>
+            <div class="embed no-pad">
+                <% amb = Ambassador.where(user_id: user.id, campaign_id: @campaign.id).first %>
+                <% if amb.status == "accepted" %>
+                    Copy the following
+                    <hr/>
+                    <div>URL (link)</div>
+                    http://swayup.co/ambassadors/<%= amb.id %>/redirect
+                    <hr>
+                    <div>Social</div>
+                    #<%= @campaign.tag %>
+                    <hr>
+                    <div>Embed code</div>
+                    <pre><code>&lt;div class=&quot;pry_card card&quot;&gt;&lt;/div&gt;&lt;script&gt;var ambid=<%= amb.id %>;var script = document.createElement('script');script.src = "geo.js";document.head.appendChild(script);&lt;/script&gt;
+                        </code>
+                    </pre>
+                <% end %>
+            </div>
         <% end %>
       </div>
     </div>

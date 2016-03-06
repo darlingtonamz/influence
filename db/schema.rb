@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160303111130) do
+ActiveRecord::Schema.define(:version => 20160304160541) do
 
   create_table "ambassador_requests", :force => true do |t|
     t.integer  "ambassador_id"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20160303111130) do
     t.text     "tag"
     t.string   "image"
     t.integer  "interest_id"
+    t.string   "min_tag_id"
   end
 
   create_table "campaigns_countries", :id => false, :force => true do |t|
@@ -77,6 +78,18 @@ ActiveRecord::Schema.define(:version => 20160303111130) do
     t.string   "region"
     t.string   "country"
     t.string   "coord"
+  end
+
+  create_table "instagram_posts", :force => true do |t|
+    t.integer "campaign_id"
+    t.string  "uid"
+    t.string  "username"
+    t.string  "caption"
+    t.integer "comments"
+    t.integer "likes"
+    t.string  "link"
+    t.string  "image"
+    t.integer "created_at"
   end
 
   create_table "interests", :force => true do |t|

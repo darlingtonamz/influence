@@ -18,16 +18,22 @@
 <div class="white no-pad">
 <div class="row">
   <% if brand.campaigns.length == 0 %>
-  <%= render "zero" %>
+    <%= render "zero" %>
   <% else %>
-  <% brand.campaigns.each do |c| %>
-  <div>
-    <%= link_to "/brands/#{c.brand_id}/campaigns/#{c.id}", remote: true do %>
-    <div class="card col-md-4"><%= c.name %></div>
-    <% end %>
-    <% end %>
-    <% end %>
-  </div>
+     <% brand.campaigns.each do |c| %>
+        <div id="card-<%= c.id %>">
+        <%= link_to "/brands/#{c.brand_id}/campaigns/#{c.id}", remote: true do %>
+            <div class="card col-md-4">
+              <div class="col-xs-10"><%= c.name %></div>
+              <%= link_to "/brands/#{c.brand_id}/campaigns/#{c.id}", method: :delete, remote: true do %>
+                  <div class="col-xs-2 cdelete">
+                    <i class="fa fa-trash"></i></div>
+              <% end %>
+            </div>
+        <% end %>
+        </div>
+     <% end %>
+  <% end %>
 </div>
 </div>
 

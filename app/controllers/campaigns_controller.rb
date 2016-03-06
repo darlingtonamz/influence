@@ -19,6 +19,15 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def destroy
+    @campaign = Campaign.find_by_id(params[:id])
+    if @campaign.destroy
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
   def new
     @countries = Country.all
     @brand = Brand.find(params[:brand_id])
@@ -68,6 +77,7 @@ class CampaignsController < ApplicationController
     respond_to do |format|
       format.js
     end
+    @campaign.save_data_from_api
   end
 
   def invite

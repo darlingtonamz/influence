@@ -54,15 +54,15 @@ Web / Organic Data
 <!-- WEB END -->
 <!-- SOCIAL -->
 <hr>
-Social Data
+Social Statistics
 <div class="row">
   <!-- Likes -->
   <div class="col-md-3 col-sm-6">
     <div class="card">
       <div class="card-body no-padding">
         <div class="alert alert-callout alert-info no-margin">
-          <strong class="text-xl">32,829</strong><br/>
-          <span class="opacity-50">Likes</span>
+          <strong id="noOfPosts" class="text-xl">0</strong><br/>
+          <span class="opacity-50">Reach</span>
         </div>
       </div><!--end .card-body -->
     </div><!--end .card -->
@@ -73,8 +73,8 @@ Social Data
     <div class="card">
       <div class="card-body no-padding">
         <div class="alert alert-callout alert-warning no-margin">
-          <strong class="text-xl">901</strong><br/>
-          <span class="opacity-50">Comments</span>
+          <strong class="totalLikes text-xl">901</strong><br/>
+          <span class="opacity-50">Likes</span>
         </div>
       </div><!--end .card-body -->
     </div><!--end .card -->
@@ -85,22 +85,22 @@ Social Data
     <div class="card">
       <div class="card-body no-padding">
         <div class="alert alert-callout alert-danger no-margin">
-          <strong class="text-xl">6.9%</strong><br/>
-          <span class="opacity-50">Likes per Impression</span>
+          <strong class="totalComments text-xl">345</strong><br/>
+          <span class="opacity-50">Comments</span>
 
         </div>
       </div><!--end .card-body -->
     </div><!--end .card -->
   </div><!--end .col -->
 
-  <!-- Cost per Impression -->
+  <!-- Likes per Reach -->
   <div class="col-md-3 col-sm-6">
     <div class="card">
       <div class="card-body no-padding">
         <div class="alert alert-callout alert-success no-margin">
 
-          <strong class="text-xl">$ 0.2</strong><br/>
-          <span class="opacity-50">Cost per Impression</span>
+          <strong class="text-xl">6.9%</strong><br/>
+          <span class="opacity-50">Likes per Reach</span>
         </div>
       </div><!--end .card-body -->
     </div><!--end .card -->
@@ -178,3 +178,67 @@ Social Data
   </div><!--end .col -->
 
 </div>
+
+<script>
+    console.log("Fetching data from instagram");
+    var hashtag = "<%= @campaign.tag %>";
+    //var hashtag = "hashtag";
+    console.log("Hashcode: " + hashtag);
+    var totalLikes = 0;
+    var totalComments = 0;
+    var postsCount = 0;
+    console.log(hashtag);
+    //Getting likes & comments INSTAGRAM API
+    $.ajax({
+        type: 'GET',
+        dataType: 'jsonp',
+        url: "https://api.instagram.com/v1/tags/" + hashtag + "/media/recent?access_token=806401368.5aa13be.4a08df065cbb41469c9cc20041432d3b&count=33",
+        success: function(data) {
+            postsCount += data.data.length;
+            $('#noOfPosts').text(data.data.media_count);
+            for (var i = 0; i < data.data.length; i++) {
+                totalLikes += data.data[i].likes.count;
+                totalComments += data.data[i].comments.count;
+            }
+            if (data.pagination.next_url === undefined) {
+                $('.totalLikes').text(totalLikes);
+                $('.totalComments').text(totalComments);
+            } else {
+                $('.totalLikes').text(totalLikes);
+                $('.totalComments').text(totalComments);
+                getNextPosts(data.pagination.next_url, totalLikes, totalComments, postsCount);
+            }
+        }
+    });
+
+    function getNextPosts(url, likes, comments, count) {
+        $.ajax({
+            type: 'GET',
+            dataType: 'jsonp',
+            url: url,
+            success: function(nxtData) {
+                var newUrl = nxtData.pagination.next_url;
+                if (newUrl === undefined) {
+                    count += nxtData.data.length;
+                    for (var i = 0; i < nxtData.data.length; i++) {
+                        likes += nxtData.data[i].likes.count;
+                        comments += nxtData.data[i].comments.count;
+                    }
+                    $('.totalLikes').text(likes);
+                    $('.totalComments').text(comments);
+                    console.log("last posts request");
+                } else {
+                    count += nxtData.data.length;
+                    console.log(Math.round(count/nxtData.data.length)+ " requests")
+                    for (var i = 0; i < nxtData.data.length; i++) {
+                        likes += nxtData.data[i].likes.count;
+                        comments += nxtData.data[i].comments.count;
+                    }
+                    $('.totalLikes').text(likes);
+                    $('.totalComments').text(comments);
+                    getNextPosts(newUrl, likes, comments, count);
+                }
+            }
+        });
+    }
+</script>

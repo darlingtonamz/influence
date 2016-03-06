@@ -1,3 +1,43 @@
+.center{
+  margin: auto;
+  text-align: center;
+}
+
+.white{
+  background: #fff;
+}
+
+.card .no-pad{
+  margin: -1.5rem;
+  color: #333;
+  padding: 1.5rem;
+}
+
+.c-inactive{
+  border-bottom: 3px solid #ea95fb;
+}
+
+.form-group label{
+  margin: -19px 0px 0px !important;
+}
+
+.float-top-right{
+  position: relative;
+  float: right;
+  top: 5px;
+  right: 10px;
+}
+
+#hash-circle{
+  min-height: 20px;
+  min-width: 20px;
+  background: #ccc;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+}
+
+.circle{
+  border-radius: 50%;
+}
 
 .field {
   margin: 10px 0 10px 0;
@@ -37,5 +77,28 @@
 }
 
 .cphoto{
-  width: 400px;
+  width: 90%;
+}
+
+.link-white a{
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+.embed{
+  background: #ddd;
+}
+
+.embed hr{
+  border-top: 1px solid #ccc;
+}
+
+.cdelete{
+  font-size: 15px;
+  color: rgb(213, 3, 3);
+  text-align: center;
+}
+
+.cdelete:hover{
+  background: #eee;
 }

@@ -1,6 +1,6 @@
-<div class="row center">
+<div class="row center link-white">
   <%= link_to  brand_campaign_path(@campaign.brand_id, @campaign.id), remote: true do %>
-    <div id="campaign_view" class="col-md-4 inactive">View</div>
+    <div id="campaign_view" class="col-md-4 c-inactive">View</div>
   <% end %>
   <%= link_to  brand_campaign_stats_path(@campaign.brand_id, @campaign.id), remote: true do %>
     <div id="campaign_stats" class="col-md-4">Stats</div>
