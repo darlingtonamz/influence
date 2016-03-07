@@ -41,8 +41,8 @@ class AmbassadorsController < ApplicationController
 
   def update
     @ambassador = Ambassador.find(params[:id])
-    @action = ambassador_param[:status]
-    if @ambassador.update_attributes(ambassador_param)
+    @action = params[:status]
+    if @ambassador.update_attributes(status: @action)
       respond_to do |format|
         format.js
       end

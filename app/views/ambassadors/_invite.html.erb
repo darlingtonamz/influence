@@ -20,26 +20,32 @@
   <div class="row">
     <% if !@invites.empty? %>
         <% @invites.each do |amb| %>
-            <div id="amb_card_<%= amb.id %>" class="col-lg-4 card campaigns">
-              <h3 class="text-center"><%= amb.campaign.brand.name %></h3>
-              <h2 class="text-center"><%= amb.campaign.name %></h2>
-              <div class="row">
-                <% if current_user.socials.where(provider: "instagram").empty? %>
-                    <button class="btn btn-success disabled">Accept</button>
-                    <button class="btn btn-danger disabled">Decline</button>
-                <% else %>
-                    <%= form_for amb, :url => {controller: 'ambassadors', action: 'update', id: amb.id}, remote: true do |f|%>
-                        <%= f.hidden_field :id, value: amb.id %>
-                        <%= f.hidden_field :status, value: 'accepted' %>
-                        <%= f.submit "Accept", class: "btn btn-success col-xs-6" %>
-                    <% end %>
-                    <%= form_for amb, :url => {controller: 'ambassadors', action: 'update'}, remote: true do |f|%>
-                        <%= f.hidden_field :id, value: amb.id %>
-                        <%= f.hidden_field :status, value: 'rejected' %>
-                        <%= f.submit "Decline", class: "btn btn-danger col-xs-6" %>
-                    <% end %>
-                <% end %>
+            <div id="amb_card_<%= amb.id %>" class="col-lg-4 card">
+              <div class="col-sm-4 cinvite">
+                <%= image_tag amb.campaign.image.url %>
               </div>
+              <div class="col-sm-8">
+                <h3 class="text-center"><%= amb.campaign.brand.name %></h3>
+                <h2 class="text-center"><%= amb.campaign.name %></h2>
+                <div class="row">
+                  <% if current_user.socials.where(provider: "instagram").empty? %>
+                      <button class="btn btn-success disabled">Accept</button>
+                      <button class="btn btn-danger disabled">Decline</button>
+                  <% else %>
+                      <%= link_to  ambassador_path(amb, status: 'accepted'), method: :put, remote: true do %>
+                          <div class="col-xs-6 invite-but">
+                            <i class='fa fa-check'></i>
+                          </div>
+                      <% end %>
+                      <%= link_to  ambassador_path(amb, status: 'rejected'), method: :put, remote: true do %>
+                          <div class="col-xs-6 invite-but red">
+                            <i class='fa fa-close'></i>
+                          </div>
+                      <% end %>
+                  <% end %>
+                </div>
+              </div>
+
             </div>
         <% end %>
     <% end %>

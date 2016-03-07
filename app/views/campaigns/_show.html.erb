@@ -1,20 +1,19 @@
 <div class="col-md-7 col-md-offset-3">
   <div class="card brand-accent">
-    <%= render 'top_mini_menu' %>
-      <div class="card-head">
-        <% if (current_user.role == "brand") %>
+    <% if current_user.id == @campaign.brand.user_id %>
+        <%= render 'top_mini_menu' %>
+        <div class="card-head">
             <%= link_to brand_campaigns_path(@campaign.brand), remote: true do %>
                 <i class="fa fa-arrow-left"></i> Back
             <% end %>
-        <% end %>
-        <div class="tools">
-          <% if current_user.id == @campaign.brand.user_id %>
-              <%= link_to  edit_brand_campaign_path(@campaign.brand_id, @campaign.id), remote: true do %>
-                  <span><i class="fa fa-pencil"></i> Edit</span>
-              <% end %>
-          <% end %>
+            <div class="tools">
+                  <%= link_to  edit_brand_campaign_path(@campaign.brand_id, @campaign.id), remote: true do %>
+                      <span><i class="fa fa-pencil"></i> Edit</span>
+                  <% end %>
+
+            </div>
         </div>
-    </div>
+    <% end %>
     <div class="white no-pad">
       <div id="show_inner">
         <div class="row">
