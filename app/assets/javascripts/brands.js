@@ -4,3 +4,4 @@
 //= require brands/AppNavigation
 //= require brands/AppNavSearch
 //= require bootstrap
+//= require sonic

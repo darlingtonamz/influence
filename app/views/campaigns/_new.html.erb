@@ -45,7 +45,7 @@
     <div class="card-head"><header>Create a Campaign</header>
     </div>
       <div class="white no-pad">
-          <%= form_for [@brand, @campaign]  do |f|%>
+          <%= form_for [@brand, @campaign], remote: true  do |f|%>
               <div class="form-group floating-label spacing">
                 <%= f.text_field :name, size: '80', class: "form-control", placeholder: "Campaign name", required:''%>
                 <label></label>
@@ -89,7 +89,7 @@
                 <%= f.file_field :image %>
               </div>
               <div class="form-group floating-label spacing">
-                <%= f.submit 'Create Campaign' , class:"btn ink-reaction btn-lg btn-accent", id: "submit", disabled: true %>
+                <%= f.submit 'Create Campaign' , class:"btn ink-reaction btn-lg btn-accent cload", id: "submit", disabled: true%>
               </div>
           <% end %>
       </div>

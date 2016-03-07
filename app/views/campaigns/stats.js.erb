@@ -1,3 +1,4 @@
 $('#campaign_view, #campaign_invite').removeClass('c-inactive');
 $('#campaign_stats').addClass('c-inactive');
-$("#show_inner").html("<%= escape_javascript(render 'campaigns/dashboard') %>")
+$("#show_inner").html("<%= escape_javascript(render 'campaigns/dashboard') %>");
+$("#jloader").delay(1000).fadeOut("slow");

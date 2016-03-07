@@ -116,3 +116,13 @@
   width: 100%;
   border-right: 1px solid #ccc;
 }
+
+#jloader{
+  width: 100px;
+  height: 100px;
+  background: #fff;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 3;
+}

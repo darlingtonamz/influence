@@ -46,10 +46,12 @@ class CampaignsController < ApplicationController
     puts '#'*100
     puts campaign_param
 
-    if @campaign.save
-      redirect_to '/brands'
-    else
-      render :new
+    respond_to do |format|
+      if @campaign.save
+        format.js{render "campaigns/index"}
+      else
+        format.js{render :new}
+      end
     end
   end
 
@@ -57,7 +59,6 @@ class CampaignsController < ApplicationController
     @brand = Brand.find(params[:brand_id])
     @campaign = Campaign.find_by_id(params[:id])
     respond_to do |format|
-      format.html
       format.js
     end
   end

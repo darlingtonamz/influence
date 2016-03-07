@@ -33,6 +33,7 @@
         <div id="content">
             <section>
               <div class="section-header"></div>
+              <div id="jloader" class="circle shad" hidden="true"></div>
                 <div class="section-body">
                     <% if @brands.empty? %>
                       <%= render "zero" %>
@@ -50,7 +51,38 @@
 
       </div><!--end #base-->
       <!-- END BASE -->
+    <script>
+      $(document).ready(function(){
+          var circle = new Sonic({
+              width: 100,
+              height: 100,
+              stepsPerFrame: 1,
+              trailLength: 1,
+              pointDistance: .02,
+              fps: 30,
+              fillColor: '#05E2FF',
+              step: function(point, index) {
 
-    </body>
+                  this._.beginPath();
+                  this._.moveTo(point.x, point.y);
+                  this._.arc(point.x, point.y, index * 7, 0, Math.PI*2, false);
+                  this._.closePath();
+                  this._.fill();
+              },
+              path: [
+                  ['arc', 50, 50, 30, 0, 360]
+              ]
+          });
+          circle.play();
+          $("#jloader").html(circle.canvas);
+
+          $(document).on("click", ".cload", function(){
+              //console.log("sndgsdg")
+              $("#jloader").show();
+          });
+      });
+    </script>
+
+  </body>
     </html>
 
