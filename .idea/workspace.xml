@@ -86,20 +86,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ambassadors_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ambassadors_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/ambassadors_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="824" max-vertical-offset="1666">
-              <caret line="64" column="23" selection-start-line="64" selection-start-column="23" selection-end-line="64" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.57894737" vertical-offset="824" max-vertical-offset="1666">
+              <caret line="64" column="50" selection-start-line="64" selection-start-column="50" selection-end-line="64" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/ambassadors/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33163264" vertical-offset="1009" max-vertical-offset="3332">
+            <state vertical-scroll-proportion="-2.5490196" vertical-offset="1009" max-vertical-offset="3332">
               <caret line="67" column="167" selection-start-line="67" selection-start-column="167" selection-end-line="67" selection-end-column="167" />
               <folding />
             </state>
@@ -185,8 +185,8 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/home/micons/micons.css" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/home/ionicons/css/ionicons.css" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/home/ionicons/css/ionicons.min.css" />
-        <option value="$PROJECT_DIR$/app/controllers/ambassadors_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/ambassadors/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/ambassadors_controller.rb" />
       </list>
     </option>
   </component>
@@ -1150,18 +1150,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/ambassadors_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/ambassadors/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="824" max-vertical-offset="1666">
-          <caret line="64" column="23" selection-start-line="64" selection-start-column="23" selection-end-line="64" selection-end-column="23" />
+        <state vertical-scroll-proportion="-2.5490196" vertical-offset="1009" max-vertical-offset="3332">
+          <caret line="67" column="167" selection-start-line="67" selection-start-column="167" selection-end-line="67" selection-end-column="167" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/ambassadors/index.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/ambassadors_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33163264" vertical-offset="1009" max-vertical-offset="3332">
-          <caret line="67" column="167" selection-start-line="67" selection-start-column="167" selection-end-line="67" selection-end-column="167" />
+        <state vertical-scroll-proportion="0.57894737" vertical-offset="824" max-vertical-offset="1666">
+          <caret line="64" column="50" selection-start-line="64" selection-start-column="50" selection-end-line="64" selection-end-column="50" />
           <folding />
         </state>
       </provider>
