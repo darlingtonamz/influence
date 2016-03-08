@@ -3,7 +3,7 @@ These are the Influencers that can push your business to the next level
 <% @users.each do |u| %>
     <div id="user_card_<%= u.id %>" class="card cprofile">
       <% instag = u.socials.where(provider: 'instagram').first %>
-      <div class="ctitle"><%= instag.full_name %></div>
+      <div class="ctitle"><%= instag.username %></div>
       <div class="col-sm-6">
         <%= image_tag instag.photo, class:'circle shad px100'%>
       </div>
