@@ -62,7 +62,7 @@ class AmbassadorsController < ApplicationController
         client_id: 'fdaf0607c4c04ac5b0dd5c2e30f56fd3',
         client_secret: '2632323495fc4e2ea569dba394853736',
         grant_type: 'authorization_code',
-        redirect_uri: 'http://localhost:3000/instagram_redirect',
+        redirect_uri: '/instagram_redirect',
         code: params[:code]
       }
     }
