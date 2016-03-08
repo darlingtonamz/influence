@@ -78,7 +78,7 @@ class CampaignsController < ApplicationController
     @ambassadors = Ambassador.where(campaign_id: @campaign.id, status: 'accepted')
     @reach = 0
     @ambassadors.each do |a|
-      @reach += a.user.socials.first.followers
+      @reach += a.user.socials.first.followers.to_i
     end
     respond_to do |format|
       format.js
