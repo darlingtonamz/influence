@@ -11,11 +11,12 @@ class AmbassadorsController < ApplicationController
       if current_user.socials.where(provider: "instagram").where("followers <> ''")
         client = current_user.socials.where(provider: "instagram").first
         uid = client.uid.to_i
-        access_token = current_user.socials.where(provider: "instagram").first.access_token
-        
-        response2 = HTTParty.get("https://api.instagram.com/v1/users/#{uid}/?access_token=#{access_token}");
-        client.followers = response2['data']['counts']['followed_by']
-        client.save
+        if (current_user.socials.where(provider: "instagram").first.access_token)
+          access_token = current_user.socials.where(provider: "instagram").first.access_token
+          response2 = HTTParty.get("https://api.instagram.com/v1/users/#{uid}/?access_token=#{access_token}");
+          client.followers = response2['data']['counts']['followed_by']
+          client.save
+        end
       end
     end
   end
