@@ -5,10 +5,10 @@ These are the Influencers that can push your business to the next level
         <% instag = u.socials.where(provider: 'instagram').first %>
         <div class="ctitle"><%= instag.username %></div>
         <div class="row">
-          <div class="col-sm-6 pad-none">
+          <div class="col-sm-6">
             <%= image_tag instag.photo, class:'circle shad px100'%>
           </div>
-          <div class="col-sm-6 pad-none">
+          <div class="col-sm-6 pad-none ov-hidden">
             <div>
               <%= u.email %>
             </div>
