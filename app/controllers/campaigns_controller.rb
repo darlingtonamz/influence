@@ -48,7 +48,7 @@ class CampaignsController < ApplicationController
 
     respond_to do |format|
       if @campaign.save
-        format.js{render "campaigns/index"}
+        format.js{render "campaign/index"}
       else
         format.js{render :new}
       end
@@ -84,7 +84,7 @@ class CampaignsController < ApplicationController
   def invite
     @campaign = Campaign.find(params[:campaign_id])
     @ambassador = Ambassador.new
-    @users = User.find_by_sql("SELECT * FROM users WHERE role = 'influencer' AND id NOT IN (SELECT user_id FROM ambassadors WHERE campaign_id = 1)")
+    @users = User.find_by_sql("SELECT * FROM users WHERE role = 'influencer' AND id NOT IN (SELECT user_id FROM ambassadors WHERE campaign_id = 1) AND id IN (SELECT user_id FROM socials)")
     respond_to do |format|
       format.js
     end
