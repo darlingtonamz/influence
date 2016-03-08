@@ -75,6 +75,11 @@ class CampaignsController < ApplicationController
   def stats
     @campaign = Campaign.find(params[:campaign_id])
     @impressions = @campaign.impressions
+    @ambassadors = Ambassador.where(campaign_id: @campaign.id, status: 'accepted')
+    @reach = 0
+    @ambassadors.each do |a|
+      @reach += a.user.socials.first.followers
+    end
     respond_to do |format|
       format.js
     end
