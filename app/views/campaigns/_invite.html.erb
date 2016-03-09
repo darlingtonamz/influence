@@ -1,5 +1,5 @@
 These are the Influencers that can push your business to the next level
-<% if @invited > 0 %>
+<% if !@invited.empty? %>
     <%= render 'invited' %>
 <% end %>
 <div class="row">
