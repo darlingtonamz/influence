@@ -89,7 +89,8 @@ class CampaignsController < ApplicationController
   def invite
     @campaign = Campaign.find(params[:campaign_id])
     @ambassador = Ambassador.new
-    @users = User.find_by_sql("SELECT * FROM users WHERE role = 'influencer' AND id NOT IN (SELECT user_id FROM ambassadors WHERE campaign_id = 1) AND id IN (SELECT user_id FROM socials)")
+    @invited = @campaign.ambassadors
+    @users = User.find_by_sql("SELECT * FROM users WHERE role = 'influencer' AND id NOT IN (SELECT user_id FROM ambassadors WHERE campaign_id = "+@campaign.id.to_s+") AND id IN (SELECT user_id FROM socials)")
     respond_to do |format|
       format.js
     end

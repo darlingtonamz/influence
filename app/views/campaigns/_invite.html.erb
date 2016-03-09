@@ -1,4 +1,7 @@
 These are the Influencers that can push your business to the next level
+<% if @invited > 0 %>
+    <%= render 'invited' %>
+<% end %>
 <div class="row">
   <% @users.each do |u| %>
       <div id="user_card_<%= u.id %>" class="card cprofile col-sm-6 ov-hidden small-pad">
