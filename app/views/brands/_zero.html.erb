@@ -1,0 +1,12 @@
+<div class="card card-outline row" style="border:1px solid purple">
+  <div class="col-lg-5 col-md-6">
+    <%= image_tag 'brand_zero.png' , class: 'zero' %>
+  </div>
+  <div class="col-lg-7 col-md-6 center">
+    <span class="zero-main">Leverage on our Influencer platform to build your brand</span><br>
+    <span class="zero-sub">Click on <strong>"Add brand"</strong> to create one</span><br>
+    <%= link_to ({:action=>"new", :controller=>"brands", remote: true}) do %>
+        <div class="btn btn-primary">Add brand</div>
+    <% end %>
+  </div>
+</div>

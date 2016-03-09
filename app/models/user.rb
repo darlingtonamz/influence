@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  scope :role, -> (role) { where role: role }
+  #scope :role, -> (ambassador_id) { where.not(:mid => Ambassador.select(ambassador_id).uniq) }
+  scope :is_influencer, -> { where(role: 'influencer') }
   #scope :interests
 
   devise :database_authenticatable, :registerable,
@@ -7,10 +8,17 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :role
-  # attr_accessible :title, :body
+=begin
+  before_validation :assign_roles
+  def assign_roles
+    puts '#'*100
+    puts (role == "influencer")
+    self.role = (role == "influencer") ? "influencer":"brand"
+  end
+=end
 
   has_many :brands
   has_many :ambassadors
-  has_and_belongs_to_many :interests
+  belongs_to :interest
   has_many :socials
 end

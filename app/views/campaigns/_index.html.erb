@@ -1,0 +1,41 @@
+<div class="col-md-10 col-md-offset-1">
+<div class="card card-outline style-accent">
+  <div class="card-head">
+   <header> <div class="section-header">
+    <ol class="breadcrumb">
+      <li class="active"><%= link_to ({:action=>"index", :controller=>"brands", remote: true}) do %>
+       Brands
+       <% end %>/ <span style="color:#ffffff;font-weight:bold"><%= brand.name %></span></li>
+     </ol>
+   </div></header>
+   <div class="tools">
+    <%= link_to "/brands/#{brand.id}/campaigns/new", remote: true do %>
+    <div class="btn btn-raised btn-primary cload"><i class="fa fa-plus"> </i> Add Campaign</div>
+    <% end %>
+    <!-- <a class="btn btn-icon-toggle btn-collapse"><i class="fa fa-angle-down"></i></a> -->
+  </div>
+</div>
+<div class="white no-pad">
+<div class="row">
+  <% if brand.campaigns.length == 0 %>
+    <%= render "campaigns/zero", brand: brand %>
+  <% else %>
+     <% brand.campaigns.each do |c| %>
+        <div id="card-<%= c.id %>">
+        <%= link_to "/brands/#{c.brand_id}/campaigns/#{c.id}", remote: true do %>
+            <div class="card col-md-4">
+              <div class="col-xs-10 cload"><%= c.name %></div>
+              <%= link_to "/brands/#{c.brand_id}/campaigns/#{c.id}", method: :delete, remote: true do %>
+                  <div class="col-xs-2 cdelete cload">
+                    <i class="fa fa-trash"></i></div>
+              <% end %>
+            </div>
+        <% end %>
+        </div>
+     <% end %>
+  <% end %>
+</div>
+</div>
+
+</div>
+</div>

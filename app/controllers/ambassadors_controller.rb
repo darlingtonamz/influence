@@ -4,45 +4,90 @@ class AmbassadorsController < ApplicationController
     if (!current_user)
       redirect_to "/"
     end
-    @ambassadors = Ambassador.find_all_by_user_id(params[:user_id]);
+    @ambassadors = Ambassador.where(user_id: current_user.id, status: 'accepted');
     @user_id = params[:user_id];
 
-    if current_user.ig_id.blank?
-      response2 = HTTParty.get('https://api.instagram.com/v1/users/' + current_user.ig_id + '/?access_token='+ current_user.ig_access_token);
-      puts "&" * 100
-      session[:ig_followers] = response2['data']['counts']['followed_by']
+    if current_user.socials.count > 0
+      if current_user.socials.where(provider: "instagram").where("followers <> ''")
+        client = current_user.socials.where(provider: "instagram").first
+        uid = client.uid.to_i
+        if (current_user.socials.where(provider: "instagram").first.access_token)
+          access_token = current_user.socials.where(provider: "instagram").first.access_token
+          response2 = HTTParty.get("https://api.instagram.com/v1/users/#{uid}/?access_token=#{access_token}");
+          client.followers = response2['data']['counts']['followed_by']
+          client.save
+        end
+      end
     end
   end
 
   def new
   end
 
-  def show
-   render "ambassadors/campaigns"
- end
+  def create
+    @ambassador = Ambassador.new(ambassador_param)
+    if @ambassador.save
+      respond_to do |format|
+        format.js
+      end
+    else
+      head :bad_request
+    end
+  end
 
- def instagram_redirect
-  options = {
-    body: {
-      client_id: 'fdaf0607c4c04ac5b0dd5c2e30f56fd3',
-      client_secret: '2632323495fc4e2ea569dba394853736',
-      grant_type: 'authorization_code',
-      redirect_uri: 'http://localhost:3000/instagram_redirect',
-      code: params[:code]
+  def show
+    @invites = Ambassador.where(user_id: current_user, status: 'pending')
+    render "ambassadors/campaigns"
+  end
+
+  def update
+    @ambassador = Ambassador.find(params[:id])
+    @action = params[:status]
+    if @ambassador.update_attributes(status: @action)
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
+  def ongoing_list
+    @ambassadors = Ambassador.where(user_id: current_user, status: 'accepted')
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def instagram_redirect
+    options = {
+      body: {
+        client_id: 'fdaf0607c4c04ac5b0dd5c2e30f56fd3',
+        client_secret: '2632323495fc4e2ea569dba394853736',
+        grant_type: 'authorization_code',
+        redirect_uri: 'http://swayup.herokuapp.com/instagram_redirect',
+        code: params[:code]
+      }
     }
-  }
 
   response = HTTParty.post('https://api.instagram.com/oauth/access_token', options)
   
+  social = Social.new
+    social.provider = "instagram"
+    social.user_id = current_user.id
+    social.access_token = response['access_token']
+    social.uid = response['user']['id']
+    social.username = response['user']['username']
+    social.bio = response['user']['bio']
+    social.photo = response['user']['profile_picture']
+    social.full_name = response['user']['full_name']
 
-  current_user.ig_access_token = response['access_token']
-  current_user.ig_id = response['user']['id']
-  current_user.ig_username = response['user']['username']
-  current_user.ig_bio = response['user']['bio']
-  current_user.ig_photo = response['user']['profile_picture']
-  current_user.ig_full_name = response['user']['full_name']
+    current_user.socials << social
 
-  current_user.save
-  redirect_to ambassadors_path
-end
+    #current_user.save
+    redirect_to ambassadors_path
+  end
+
+  private
+    def ambassador_param
+      params.require(:ambassador).permit(:user_id, :campaign_id, :status)
+    end
 end

@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <!-- Tnstagram Stats -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="panel-title-box">
+          <h3>Your Instagram Stats</h3>
+          <span>Details</span>
+        </div>
+      </div>
+      <div class="panel-body padding-0">
+        <div class="chart-holder" id="dashboard-line-1" style="height: 200px;">
+          <% if !ig_user.blank? %>
+              <div class="text">
+                <h4 class="text-center">Instagram handle: <%= ig_user.username %></h4>
+                <h4 class="text-center">Number of followers: <%= ig_user.followers %></h4>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <!-- END  Tnstagram Stats-->
+  </div>
+</div>
+</div>

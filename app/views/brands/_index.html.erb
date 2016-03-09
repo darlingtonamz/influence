@@ -1,0 +1,16 @@
+<div class="card card-outline">
+    Brands
+    <% brands.each do |b| %>
+      <div id="card-<%= b.id %>">
+        <%= link_to ({action: "index", controller: "campaigns", brand_id: b.id, remote: true}) do %>
+            <div class="card col-md-4">
+              <div class="col-xs-10"><%= b.name %></div>
+              <%= link_to "/brands/#{b.id}", method: :delete, remote: true do %>
+                  <div class="col-xs-2 cdelete cload">
+                    <i class="fa fa-trash"></i></div>
+              <% end %>
+            </div>
+        <% end %>
+      </div>
+    <% end %>
+</div>

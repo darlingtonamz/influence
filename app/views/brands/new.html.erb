@@ -1,5 +1,8 @@
-<h1>Create a new brand</h1>
-<%= form_for @brand do |f|%>
+<div class="card-head style-accent">
+	<h1>Create a new brand</h1>
+</div>
+<div class="card-body">
+	<%= form_for @brand do |f|%>
     <div class="field">
       <%= f.text_field :name, size: '80', placeholder: "Brand name"%>
     </div>
@@ -11,3 +14,5 @@
     </div>
 
 <% end %>
+
+</div>

@@ -1,0 +1,2 @@
+$("#amb_card_<%= @ambassador.id %>").html("<%= @action +' '+@ambassador.campaign.name.capitalize %>")
+        .delay(2000).hide("slow");

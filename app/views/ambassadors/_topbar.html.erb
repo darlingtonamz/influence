@@ -14,7 +14,9 @@
                     <!-- END SEARCH -->
                     <!-- SIGN OUT -->
                     <li class="pull-right">
-                        <a href="#" class="mb-control" data-box="#mb-signout"><i class="fa fa-sign-out"></i>Sign Out</a>                        
+                        <%= link_to destroy_user_session_path, method: :delete do%>
+                            <i class="fa fa-sign-out"></i>Sign Out</a>
+                        <% end %>                        
                     </li> 
                     <!-- END SIGN OUT -->
                 </ul>

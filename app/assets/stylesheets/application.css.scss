@@ -10,8 +10,10 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
-
  *= require_self
+ *= require brands/font-awesome.min
+ *= require theme-default
+ *= require shared
  */
 @import "bootstrap";
 
@@ -36,3 +38,14 @@
 .cprofile{
   max-width: 300px;
 }
+
+.inactive{
+  background: #666;
+}
+
+.navbar{
+  border: none;
+  border-radius: 0;
+  background-color: rgba(0,0,0,0.5);
+}
+

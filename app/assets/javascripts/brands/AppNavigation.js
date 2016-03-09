@@ -101,7 +101,7 @@
 	// =========================================================================
 
 	p._handleMenuItemClick = function (e) {
-		e.stopPropagation();
+		/*e.stopPropagation();
 
 		var item = $(e.currentTarget);
 		var submenu = item.find('> ul');
@@ -116,7 +116,7 @@
 			if(menuIsCollapsed || item.hasClass('expanded') === false) {
 				this._openSubMenu(item);
 			}
-		}
+		}*/
 	};
 
 	p._handleMenubarEnter = function (menuItem) {

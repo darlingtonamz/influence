@@ -2,7 +2,12 @@
   <%= stylesheet_link_tag    'users', media: 'all', 'data-turbolinks-track' => true %>
 </head>
 <div class="container">
- <div class="row">
+   <div class="row">
+    <div class="logo">
+      <a href="/">Sway Up</a>
+    </div>
+  </div>
+ <div class="row top-spacing">
   <div class="col-lg-8 col-lg-offset-2">
    <div class="frame">
     <div class="reg">
@@ -21,9 +26,7 @@
    
     
     <%= f.password_field :password_confirmation, autocomplete: "off",:class => "form-styling", :placeholder => "Confirm Password" %> <br>
-
-      <% f.radio_button(:role, "brand") %><% f.label("Brand") %><br>
-      <% f.radio_button(:role, "influencer") %><% f.label("Influencer") %>
+    <%= f.hidden_field :role, value: params[:role] %>
 
   <div class="actions">
     <%= f.submit "Sign up", :class => "btn-sign"  %>
@@ -38,4 +41,16 @@
  </div>
 </div>
 </div>
+ <footer>
+   <div class="footer-bottom">
+    <div class="row">
+
+      <div class="col-twelve">
+        <div class="copyright">
+          <span>© Copyright SwayUp 2016.</span>
+        </div>
+      </div>  
+ </div>
+</div>
+</footer>
 </div>

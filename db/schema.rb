@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160223184539) do
+ActiveRecord::Schema.define(:version => 20160304160541) do
 
   create_table "ambassador_requests", :force => true do |t|
     t.integer  "ambassador_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20160223184539) do
     t.integer  "campaign_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.text     "status"
   end
 
   create_table "brands", :force => true do |t|
@@ -44,16 +45,14 @@ ActiveRecord::Schema.define(:version => 20160223184539) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.text     "tag"
+    t.string   "image"
+    t.integer  "interest_id"
+    t.string   "min_tag_id"
   end
 
   create_table "campaigns_countries", :id => false, :force => true do |t|
     t.integer "campaign_id"
     t.integer "country_id"
-  end
-
-  create_table "campaigns_interests", :id => false, :force => true do |t|
-    t.integer "campaign_id"
-    t.integer "interest_id"
   end
 
   create_table "countries", :force => true do |t|
@@ -72,10 +71,25 @@ ActiveRecord::Schema.define(:version => 20160223184539) do
     t.string   "source"
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
-    t.string   "session_id"
-    t.integer  "clicks",        :default => 0
-    t.integer  "hover_time"
+    t.string   "ip"
+    t.integer  "view_time",     :default => 0
+    t.integer  "hover_time",    :default => 0
+    t.string   "city"
+    t.string   "region"
     t.string   "country"
+    t.string   "coord"
+  end
+
+  create_table "instagram_posts", :force => true do |t|
+    t.integer "campaign_id"
+    t.string  "uid"
+    t.string  "username"
+    t.string  "caption"
+    t.integer "comments"
+    t.integer "likes"
+    t.string  "link"
+    t.string  "image"
+    t.integer "created_at"
   end
 
   create_table "interests", :force => true do |t|
@@ -101,10 +115,16 @@ ActiveRecord::Schema.define(:version => 20160223184539) do
 
   create_table "socials", :force => true do |t|
     t.string   "provider"
-    t.integer  "uid"
+    t.string   "uid"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.text     "access_token"
+    t.text     "username"
+    t.text     "bio"
+    t.text     "photo"
+    t.text     "full_name"
+    t.text     "followers"
   end
 
   create_table "subscriptions", :force => true do |t|
@@ -128,12 +148,7 @@ ActiveRecord::Schema.define(:version => 20160223184539) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "role"
-    t.text     "ig_access_token"
-    t.text     "ig_id"
-    t.text     "ig_username"
-    t.text     "ig_bio"
-    t.text     "ig_photo"
-    t.text     "ig_full_name"
+    t.integer  "interest_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

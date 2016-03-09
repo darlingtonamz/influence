@@ -29,10 +29,16 @@ GEM
       i18n (= 0.6.1)
       multi_json (~> 1.0)
     arel (3.0.3)
+    bcrypt (3.1.10)
     bcrypt (3.1.10-x86-mingw32)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     builder (3.0.4)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     coderay (1.1.1)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -70,6 +76,7 @@ GEM
     multi_json (1.11.2)
     multi_xml (0.5.5)
     orm_adapter (0.5.0)
+    pg (0.18.4)
     pg (0.18.4-x86-mingw32)
     polyglot (0.3.5)
     power_assert (0.2.7)
@@ -95,7 +102,7 @@ GEM
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
-    rails_serve_static_assets (0.0.4)
+    rails_serve_static_assets (0.0.5)
     rails_stdout_logging (0.0.4)
     railties (3.2.13)
       actionpack (= 3.2.13)
@@ -143,10 +150,12 @@ GEM
       rack (>= 1.0)
 
 PLATFORMS
+  ruby
   x86-mingw32
 
 DEPENDENCIES
   bootstrap-sass (~> 3.1.1.0)
+  carrierwave
   coffee-rails (~> 3.2.1)
   devise
   httparty
@@ -163,4 +172,4 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

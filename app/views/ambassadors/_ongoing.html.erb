@@ -1,0 +1,10 @@
+Ongoing
+<hr>
+<% @ambassadors.each do |amb| %>
+    <%= link_to "/brands/#{amb.campaign.brand_id}/campaigns/#{amb.campaign.id}", remote: true do %>
+        <div class="card">
+          <h3 class="text-center"><%= amb.campaign.brand.name %></h3>
+          <h2 class="text-center"><%= amb.campaign.name %></h2>
+        </div>
+    <% end %>
+<% end %>
