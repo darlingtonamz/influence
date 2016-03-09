@@ -41,7 +41,11 @@
           <div class="col-md-6">
             <div class="field">
               <div class="ftitle">Campaign photo</div>
-              <%= image_tag @campaign.image.url, class: 'cphoto' %>
+              <% if @campaign.image.url %>
+                <%= image_tag @campaign.image.url, class: 'cphoto' %>
+              <% else %>
+                No image uploaded
+              <% end %>
             </div>
           </div>
         </div>
