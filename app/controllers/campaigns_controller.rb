@@ -48,7 +48,7 @@ class CampaignsController < ApplicationController
 
     respond_to do |format|
       if @campaign.save
-        format.js{render "campaign/index"}
+        format.js{render "index"}
       else
         format.js{render :new}
       end
