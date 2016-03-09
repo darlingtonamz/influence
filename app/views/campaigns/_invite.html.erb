@@ -2,7 +2,7 @@ These are the Influencers that can push your business to the next level
 <% if !@invited.empty? %>
     <%= render 'invited' %>
 <% end %>
-<div class="row">
+<span class="row">
   <% @users.each do |u| %>
       <div id="user_card_<%= u.id %>" class="card cprofile col-sm-6 ov-hidden small-pad">
         <% instag = u.socials.where(provider: 'instagram').first %>
@@ -31,4 +31,4 @@ These are the Influencers that can push your business to the next level
 
       </div>
   <% end %>
-</div>
+</span>

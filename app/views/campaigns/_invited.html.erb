@@ -1,10 +1,10 @@
-<div class="embed">
+<div class="embed marg-top-bot">
   <div>
     <% rej = 0; acc = 0; pen = 0 %>
     <% @invited.each do |amb|%>
         <% if amb.status == "accepted" %>
             <% u = amb.user.socials.first; acc += 1 %>
-            <span title="<% u.username %>" class="small-pad"><% image_tag u.photo, class: 'circle shad' %></span>
+            <span title="<%= u.username %>" class="small-pad"><%= image_tag u.photo, class: 'circle shad' %></span>
         <% elsif amb.status == "pending" %>
             <% pen += 1 %>
         <% else %>
@@ -14,13 +14,13 @@
   </div>
   <div class="row center">
     <div class="col-sm-4">
-      <% acc %> Accepted
+      <%= acc %> Accepted
     </div>
     <div class="col-sm-4">
-      <% pen %> Pending
+      <%= pen %> Pending
     </div>
     <div class="col-sm-4">
-      <% rej %> Rejected
+      <%= rej %> Rejected
     </div>
   </div>
 
